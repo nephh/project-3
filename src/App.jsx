@@ -1,5 +1,6 @@
 import React from "react";
-import {Slider} from "./components/Slider";
+import Slider from "./components/Slider";
+
 function App() {
   return (
     <>
@@ -8,6 +9,7 @@ function App() {
           The Greatest Website Ever
         </h1>
         <p>By: Owen, Jared, and Dustin</p>
+        <Slider />
       </div>
     </>
   );
