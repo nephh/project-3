@@ -76,6 +76,7 @@ function NavTabs() {
           >
             Login
           </button>
+          {/* Mobile Burger Menu */}
           <button
             data-collapse-toggle="navbar-cta"
             type="button"
@@ -126,13 +127,13 @@ function NavTabs() {
             <li>
               <Link
                 to="/Create"
-                className="d:dark:hover:text-blue-500 block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
               >
                 Create
               </Link>
             </li>
-            <li className="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700      dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500">
-              <Link to="/Contact">Contact</Link>
+            <li className="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500">
+              <Link to="/Browse">Browse</Link>
             </li>
           </ul>
         </div>

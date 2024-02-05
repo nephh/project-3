@@ -6,7 +6,7 @@ import Error from "./pages/Error.jsx";
 import Home from "./pages/Home.jsx";
 import Create from "./pages/Create.jsx";
 import About from "./pages/About.jsx";
-import Contact from "./pages/Contact.jsx";
+import Browse from "./pages/Browse.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -32,8 +32,8 @@ const router = createBrowserRouter([
         element: <Create />
       },
       {
-        path: "contact",
-        element: <Contact />
+        path: "browse",
+        element: <Browse />
       },
     ],
   },

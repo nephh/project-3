@@ -1,7 +1,7 @@
-export default function Contact() {
+export default function Browse() {
     return (
       <div>
-        <h1 className="text-2xl">Contact Page</h1>
+        <h1 className="text-2xl">Browse Page</h1>
         <p>
           Nunc pharetra finibus est at efficitur. Praesent sed congue diam.
           Integer gravida dui mauris, ut interdum nunc egestas sed. Aenean sed
