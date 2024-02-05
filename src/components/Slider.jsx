@@ -37,7 +37,7 @@ const testData = [
 
 const Slider = () => {
   return (
-    <div className='flex items-center justify-center flex-col h-screen bg-slate-700'>
+    <div className='flex items-center justify-center flex-col bg-zinc-700'>
         <Swiper 
         breakpoints={{
             340: {
