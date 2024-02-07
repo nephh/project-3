@@ -10,7 +10,7 @@ function NavTabs() {
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           {/* <img src="" className="h-8" alt="Endeveor image" /> */}
           <span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white">
-            Endeavour
+            Endeavor
           </span>
         </a>
         <div className="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
