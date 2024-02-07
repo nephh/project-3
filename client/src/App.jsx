@@ -5,15 +5,9 @@ import Nav from "./components/NavTabs.jsx";
 function App() {
   return (
     <>
-      <Nav />
-      <div className="h-5/6 bg-zinc-800">
+      <div className="h-screen bg-zinc-800">
+        <Nav />
         <Outlet />
-      </div>
-      <div>
-        <h1 className="font-bold text-zinc-300">
-          The Greatest Website Ever
-        </h1>
-        <p>By: Owen, Jared, and Dustin</p>
       </div>
     </>
   );
