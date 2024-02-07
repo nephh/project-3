@@ -18,7 +18,7 @@ export default function Login() {
             <form action="">
             <div class="mb-6">
                 <label
-                  for="username"
+                  htmlFor="username"
                   class="mb-2 block text-sm text-gray-600 dark:text-gray-400"
                 >
                   Username
@@ -33,7 +33,7 @@ export default function Login() {
               </div>
               <div class="mb-6">
                 <label
-                  for="email"
+                  htmlFor="email"
                   class="mb-2 block text-sm text-gray-600 dark:text-gray-400"
                 >
                   Email Address
@@ -49,7 +49,7 @@ export default function Login() {
               <div class="mb-6">
                 <div class="mb-2 flex justify-between">
                   <label
-                    for="password"
+                    htmlFor="password"
                     class="text-sm text-gray-600 dark:text-gray-400"
                   >
                     Password

@@ -19,10 +19,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  thoughts: [
+  communities: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Thought",
+      ref: "Community",
     },
   ],
 });
