@@ -8,12 +8,17 @@ const endeavorSchema = new Schema({
   },
   content: {
     type: String,
-    required: true,
+    required: false,
     trim: true,
     minlength: 1,
     maxlength: 280,
   },
   author: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  community: {
     type: String,
     required: true,
     trim: true,

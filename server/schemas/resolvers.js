@@ -1,20 +1,29 @@
 const { User, Community } = require("../models");
+const Endeavor = require("../models/Endeavor");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find();
+      return User.find().populate("communities");
     },
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
     communities: async (parent, { name }) => {
       const params = name ? { name } : {};
-      return Community.find(params).sort({ createdAt: -1 });
+      return Community.find(params).populate("endeavors").populate("users");
+      // .sort({ createdAt: -1 });
     },
     community: async (parent, { communityId }) => {
-      return Community.findOne({ _id: communityId });
+      return Community.findOne({ _id: communityId }).populate("endeavors");
+    },
+    endeavors: async (parent, { communityId }) => {
+      const params = communityId ? { communityId } : {};
+      return Endeavor.find(params);
+    },
+    endeavor: async (parent, { endeavorId }) => {
+      return Endeavor.findOne({ _id: endeavorId });
     },
   },
 
@@ -62,6 +71,25 @@ const resolvers = {
         );
 
         return community;
+      }
+      throw AuthenticationError;
+      ("You need to be logged in!");
+    },
+    addEndeavor: async (parent, { title, content, community }, context) => {
+      if (context.user) {
+        const endeavor = await Endeavor.create({
+          title,
+          content,
+          community,
+          author: context.user.username,
+        });
+
+        await Community.findOneAndUpdate(
+          { name: community },
+          { $addToSet: { endeavors: endeavor._id } },
+        );
+
+        return endeavor;
       }
       throw AuthenticationError;
       ("You need to be logged in!");
