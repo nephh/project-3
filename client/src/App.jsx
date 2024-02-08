@@ -15,9 +15,7 @@ function App() {
   });
 
   const authLink = setContext((_, { headers }) => {
-    // get the authentication token from local storage if it exists
     const token = localStorage.getItem("id_token");
-    // return the headers to the context so httpLink can read them
     return {
       headers: {
         ...headers,
@@ -34,13 +32,9 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <Nav />
-      <div className="h-5/6 bg-zinc-800">
+      <div className="h-full bg-zinc-800">
+        <Nav />
         <Outlet />
-      </div>
-      <div>
-        <h1 className="font-bold text-zinc-300">The Greatest Website Ever</h1>
-        <p>By: Owen, Jared, and Dustin</p>
       </div>
     </ApolloProvider>
   );

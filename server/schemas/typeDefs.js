@@ -12,6 +12,9 @@ const typeDefs = `
     name: String
     description: String
     creator: String
+    url: String
+    userCount: Int
+    endeavorCount: Int
     endeavors: [Endeavor]
     users: [User]!
   }
@@ -22,7 +25,17 @@ const typeDefs = `
     content: String
     author: String
     community: String
+    communityUrl: String
+    userCount: Int
+    commentCount: Int
+    comments: [Comment]!
     users: [User]!
+  }
+
+  type Comment {
+    _id: ID
+    commentText: String
+    commentAuthor: String
   }
 
   type Auth {
@@ -35,7 +48,7 @@ const typeDefs = `
     user(username: String!): User
     communities(username: String): [Community]
     community(communityId: ID!): Community
-    endeavors(communityId: ID!): [Endeavor]
+    endeavors(communityId: ID): [Endeavor]
     endeavor(endeavorId: ID!): Endeavor
   }
 

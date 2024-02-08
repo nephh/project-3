@@ -8,7 +8,7 @@ const resolvers = {
       return User.find().populate("communities");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username });
+      return User.findOne({ username }).populate("communities");
     },
     communities: async (parent, { name }) => {
       const params = name ? { name } : {};
@@ -20,10 +20,10 @@ const resolvers = {
     },
     endeavors: async (parent, { communityId }) => {
       const params = communityId ? { communityId } : {};
-      return Endeavor.find(params);
+      return Endeavor.find(params).populate("users");
     },
     endeavor: async (parent, { endeavorId }) => {
-      return Endeavor.findOne({ _id: endeavorId });
+      return Endeavor.findOne({ _id: endeavorId }).populate("users");
     },
   },
 

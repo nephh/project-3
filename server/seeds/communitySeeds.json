@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Monster Hunter",
+    "description": "A community focused around the Monster Hunter franchise. Create Endeavors and enjoy the hunt!",
+    "creator": "Owen",
+    "users": ["frodo", "dusty", "jared", "Owen"],
+    "endeavors": []
+  },
+  {
+    "name": "Music Lovers",
+    "description": "A place for music enthusiasts to share and discuss their favorite tunes.",
+    "creator": "eva",
+    "users": ["eva", "dusty", "jared", "frodo", "Owen"],
+    "endeavors": []
+  },
+  {
+    "name": "Columbus Explorers",
+    "description": "A community for people living in or interested in Columbus, Ohio.",
+    "creator": "jared",
+    "users": ["eva", "dusty", "jared"],
+    "endeavors": []
+  },
+  {
+    "name": "Columbus Music Scene",
+    "description": "Discuss the latest bands, concerts, and music events in Columbus.",
+    "creator": "dusty",
+    "users": ["eva", "dusty", "jared"],
+    "endeavors": []
+  },
+  {
+    "name": "Smash Bros Fans",
+    "description": "A community for fans of the Super Smash Bros. video game series.",
+    "creator": "Owen",
+    "users": ["eva", "dusty", "jared", "Owen"],
+    "endeavors": []
+  },
+  {
+    "name": "Programming Help",
+    "description": "A place to ask questions and get help with programming problems.",
+    "creator": "eva",
+    "users": ["eva", "dusty", "jared", "Owen"],
+    "endeavors": []
+  },
+  {
+    "name": "Photography",
+    "description": "Share your photos, get feedback, and discuss photography techniques.",
+    "creator": "Owen",
+    "users": ["eva", "dusty", "jared", "Owen"],
+    "endeavors": []
+  },
+  {
+    "name": "Outdoor Adventures",
+    "description": "A community for outdoor enthusiasts to share their adventures and tips.",
+    "creator": "dusty",
+    "users": ["eva", "dusty", "jared", "frodo"],
+    "endeavors": []
+  },
+  {
+    "name": "Book Club",
+    "description": "Discuss your favorite books and discover new ones.",
+    "creator": "eva",
+    "users": ["eva", "dusty", "jared"],
+    "endeavors": []
+  },
+  {
+    "name": "Movie Buffs",
+    "description": "A place to discuss the latest movies and classic cinema.",
+    "creator": "jared",
+    "users": ["eva", "dusty", "jared"],
+    "endeavors": []
+  }
+]

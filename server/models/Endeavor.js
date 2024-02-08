@@ -41,6 +41,8 @@ const endeavorSchema = new Schema({
         type: String,
         required: true,
       },
+      // Need to add this to typeDefs if we add
+      //
       // createdAt: {
       //   type: Date,
       //   default: Date.now,
@@ -48,6 +50,18 @@ const endeavorSchema = new Schema({
       // },
     },
   ],
+});
+
+endeavorSchema.virtual("communityUrl").get(function () {
+  return this.community.toLowerCase().split(" ").join("-");
+});
+
+endeavorSchema.virtual("userCount").get(function () {
+  return this.users.length;
+});
+
+endeavorSchema.virtual("commentCount").get(function () {
+  return this.comments.length;
 });
 
 const Endeavor = model("Endeavor", endeavorSchema);
