@@ -1,0 +1,32 @@
+[
+  {
+    "username": "eva",
+    "email": "eva@gmail.com",
+    "password": "password01",
+    "communities": []
+  },
+  {
+    "username": "Owen",
+    "email": "owen@gmail.com",
+    "password": "password02",
+    "communities": []
+  },
+  {
+    "username": "jared",
+    "email": "jared@gmail.com",
+    "password": "password03",
+    "communities": []
+  },
+  {
+    "username": "dusty",
+    "email": "dusty@gmail.com",
+    "password": "password04",
+    "communities": []
+  },
+  {
+    "username": "frodo",
+    "email": "frodo@gmail.com",
+    "password": "password05",
+    "communities": []
+  }
+]
