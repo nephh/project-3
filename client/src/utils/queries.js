@@ -27,3 +27,25 @@ export const QUERY_ENDEAVORS = gql`
     }
   }
 `;
+
+export const DASHBOARD_QUERY = gql`
+  query Dashboard($username: String!, $communityId: ID) {
+    endeavors(communityId: $communityId) {
+      _id
+      title
+      community
+      content
+      commentCount
+      author
+      userCount
+      communityUrl
+    }
+    user(username: $username) {
+      username
+      communities {
+        name
+        userCount
+      }
+    }
+  }
+`;

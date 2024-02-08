@@ -1,21 +1,21 @@
 import { useQuery } from "@apollo/client";
 import DashboardCommunities from "../components/DashboardCommunities";
 import DashboardList from "../components/DashboardList";
-import { QUERY_COMMUNITIES, QUERY_ENDEAVORS } from "../utils/queries";
+import { DASHBOARD_QUERY } from "../utils/queries";
 import Auth from "../utils/auth";
 
 export default function Dashboard() {
-  const { loading, data } = useQuery(QUERY_ENDEAVORS);
-  const { loading: cloading, data: communityData } =
-    useQuery(QUERY_COMMUNITIES);
+  const { data: user } = Auth.getUserInfo();
+  const { loading, data } = useQuery(DASHBOARD_QUERY, {
+    variables: { username: user.username },
+  });
 
-  if (loading || cloading) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
   const endeavors = data?.endeavors || [];
-  const communities = communityData?.communities || [];
-  const { data: user } = Auth.getUserInfo();
+  const communities = data?.user.communities || [];
 
   return (
     <div className="flex flex-col items-center">
