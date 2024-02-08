@@ -12,7 +12,7 @@ const styles = {
 
 export default function Endeavor() {
   return (
-    <div className="overflow-x-hidden bg-gray-100">
+    <div className="container flex justify-between mx-auto overflow-x-hidden bg-gray-100">
       {/* name of endeavor and description */}
       <div className="px-6 py-8">
         <div className="w-full lg:w-8/12">
@@ -132,8 +132,8 @@ export default function Endeavor() {
         </div>
       </div>
       {/* aside */}
-      <div className="hidden w-4/12 -mx-8 lg:block">
-        <div className="px-8">
+      <div className="container hidden w-4/12 -mx-8 lg:block">
+        <div className="px-8 ">
           <h1 className="mb-4 text-xl font-bold text-gray-700">Founders</h1>
             <div className="flex flex-col max-w-sm px-6 py-4 mx-auto bg-white rounded-lg shadow-md">
               <ul className="-mx-4">
