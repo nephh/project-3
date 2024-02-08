@@ -17,9 +17,9 @@ const communitySchema = new Schema({
     required: true,
     trim: true,
   },
-  userLimit: {
-    type: Number,
-  },
+  // userLimit: {
+  //   type: Number,
+  // },
   users: [
     {
       type: Schema.Types.ObjectId,
@@ -32,6 +32,27 @@ const communitySchema = new Schema({
       ref: "Endeavor",
     },
   ],
+});
+
+// communitySchema.pre("save", async function (next) {
+//   if (this.isNew || this.isModified("name")) {
+//     const url = this.name.toLowerCase().split(" ").join("-");
+//     this.url = url;
+//   }
+
+//   next();
+// });
+
+communitySchema.virtual("url").get(function () {
+  return this.name.toLowerCase().split(" ").join("-");
+});
+
+communitySchema.virtual("userCount").get(function () {
+  return this.users.length;
+});
+
+communitySchema.virtual("endeavorCount").get(function () {
+  return this.endeavors.length;
 });
 
 const Community = model("Community", communitySchema);

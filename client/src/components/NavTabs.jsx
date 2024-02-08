@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import Auth from "../utils/auth";
 
 function NavTabs() {
   const currentPage = useLocation().pathname;
@@ -14,14 +15,26 @@ function NavTabs() {
           </span>
         </a>
         <div className="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-          <Link to={"/login"}>
-            <button
-              type="button"
-              className="rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Login
-            </button>
-          </Link>
+          {Auth.loggedIn() ? (
+            <Link to={"/login"}>
+              <button
+                type="button"
+                className="rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                onClick={() => Auth.logout()}
+              >
+                Logout
+              </button>
+            </Link>
+          ) : (
+            <Link to={"/login"}>
+              <button
+                type="button"
+                className="rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Login
+              </button>
+            </Link>
+          )}
           {/* Mobile Burger Menu , not functional atm*/}
           <button
             data-collapse-toggle="navbar-cta"
