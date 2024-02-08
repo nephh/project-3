@@ -1,58 +1,24 @@
-import React from "react";
-import DashboardList from "../components/DashboardList";
+import { useQuery } from "@apollo/client";
 import DashboardCommunities from "../components/DashboardCommunities";
-
-const data = [
-  {
-    community: "Music",
-    author: "neph",
-    title: "cool music",
-    content: "some content",
-    users: 10,
-  },
-  {
-    community: "Clemmie Marline",
-    author: "neph",
-    title: "sggsE7cS",
-    content: "some content",
-    users: 63,
-  },
-  {
-    community: "Rivi Andi",
-    author: "neph",
-    title: "4YfmKstSY",
-    content: "some content",
-    users: 11,
-  },
-  {
-    community: "Idelle Bria",
-    author: "neph",
-    title: "5qWYzKoB",
-    content: "some content",
-    users: 56,
-  },
-];
-
-const comData = [
-  {
-    name: "Music",
-    users: 10,
-  },
-  {
-    name: "Games",
-    users: 20,
-  },
-  {
-    name: "Monster Hunter",
-    users: 200,
-  },
-];
+import DashboardList from "../components/DashboardList";
+import { QUERY_COMMUNITIES, QUERY_ENDEAVORS } from "../utils/queries";
 
 export default function Dashboard() {
+  const { loading, data } = useQuery(QUERY_ENDEAVORS);
+  const { loading: cloading, data: communityData } =
+    useQuery(QUERY_COMMUNITIES);
+
+  if (loading || cloading) {
+    return <div>Loading...</div>;
+  }
+
+  const endeavors = data?.endeavors || [];
+  const communities = communityData?.communities || [];
+
   return (
     <div className="mt-4 flex flex-row justify-evenly">
-      <DashboardList endeavors={data} />;
-      <DashboardCommunities communities={comData} />
+      <DashboardList endeavors={endeavors} />
+      <DashboardCommunities communities={communities} />
     </div>
   );
 }

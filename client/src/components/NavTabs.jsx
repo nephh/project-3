@@ -3,7 +3,6 @@ import Auth from "../utils/auth";
 
 function NavTabs() {
   const currentPage = useLocation().pathname;
-  console.log(Auth.loggedIn());
 
   return (
     // TEST Navbar
