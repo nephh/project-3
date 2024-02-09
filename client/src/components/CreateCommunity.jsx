@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMUNITY } from "../utils/mutations";
+import { QUERY_SINGLE_USER } from "../utils/queries";
 import Auth from "../utils/auth";
 
 const CreateCommunity = () => {
+  const user = Auth.getUserInfo();
   const [formState, setFormState] = useState({
     name: "",
     description: "",
   });
-  const [addCommunity] = useMutation(ADD_COMMUNITY);
-  const user = Auth.getUserInfo();
+  const [addCommunity] = useMutation(ADD_COMMUNITY, {
+    refetchQueries: [
+      { query: QUERY_SINGLE_USER, variables: { username: user.data.username } },
+    ],
+  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
