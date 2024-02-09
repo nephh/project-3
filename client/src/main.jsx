@@ -6,10 +6,11 @@ import Error from "./pages/Error.jsx";
 import Home from "./pages/Home.jsx";
 import Create from "./pages/Create.jsx";
 import Community from "./pages/Community.jsx";
-import Browse from "./pages/Browse.jsx";
+import Communities from "./pages/Communities.jsx";
 import "./index.css";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
+import Endeavor from "./pages/Endeavor.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 
 const router = createBrowserRouter([
@@ -27,16 +28,20 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "communities",
+        path: "community/:communityUrl",
         element: <Community />,
+      },
+      {
+        path: "endeavor",
+        element: <Endeavor />,
       },
       {
         path: "create",
         element: <Create />,
       },
       {
-        path: "browse",
-        element: <Browse />,
+        path: "communities",
+        element: <Communities />,
       },
       {
         path: "dashboard",

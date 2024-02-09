@@ -32,7 +32,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div className="h-full bg-zinc-800">
+      <div className="h-full bg-zinc-800 text-zinc-300">
         <Nav />
         <Outlet />
       </div>
