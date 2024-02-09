@@ -40,8 +40,8 @@ const resolvers = {
         .populate("users")
         .sort(sort);
     },
-    community: async (parent, { communityId }) => {
-      return Community.findOne({ _id: communityId }).populate("endeavors");
+    community: async (parent, { url }) => {
+      return Community.findOne({ url }).populate("endeavors").populate("users");
     },
     endeavors: async (parent, { communityUrl, sort }) => {
       const params = communityUrl ? { communityUrl } : {};
