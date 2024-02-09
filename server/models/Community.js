@@ -37,14 +37,6 @@ const communitySchema = new Schema({
   ],
 });
 
-// communitySchema.pre("save", async function (next) {
-//   if (this.isNew || this.isModified("name")) {
-//     const url = this.name.toLowerCase().split(" ").join("-");
-//     this.url = url;
-//   }
-
-//   next();
-// });
 communitySchema.pre("save", async function (next) {
   if (this.isNew || this.isModified("users")) {
     this.userCount = this.users.length;
