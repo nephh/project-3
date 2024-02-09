@@ -37,7 +37,7 @@ export default function Create() {
       <CreateCommunity />
       </div>
       ) : (
-        <div className="text-2xl text-center text-amber-400 py-10">
+        <div className="text-2xl text-center text-amber-400 py-10 h-screen">
           <p>You need to be logged in to Create a Community or Endeavor.</p> 
           <p>  Please{' '}
           <Link to="/login" className="text-white">login</Link> or <Link to="/signup" className="text-white">signup.</Link>
