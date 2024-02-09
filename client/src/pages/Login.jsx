@@ -4,13 +4,17 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import Slider from "../components/Slider";
+//TEST query
+import { useQuery } from "@apollo/client";
+import { QUERY_ENDEAVORS } from "../utils/queries";
 
 export default function Login() {
   const [formState, setFormState] = useState({
     email: "",
     password: "",
   });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -39,10 +43,20 @@ export default function Login() {
     // });
   };
 
+  //TEST query
+  const { loading, data } = useQuery(QUERY_ENDEAVORS);
+  const endeavors = data?.endeavors || [];
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  //console.log(endeavors);
+
+
   return (
     <div className="flex min-h-screen items-center bg-white dark:bg-gray-900">
       <div className="container mx-auto">
-        <div className="mx-auto my-10 max-w-md">
+        <div className="mx-auto my-3 max-w-md">
           <div className="text-center">
             <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">
               Sign in
@@ -108,6 +122,7 @@ export default function Login() {
             </form>
           </div>
         </div>
+        <Slider endeavors={endeavors}/>
       </div>
     </div>
   );

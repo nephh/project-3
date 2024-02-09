@@ -7,13 +7,38 @@ const resolvers = {
     users: async () => {
       return User.find().populate("communities");
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("communities");
+    user: async (parent, { username, sort }) => {
+      switch (sort) {
+        case "popular":
+          sort = { userCount: 1 };
+          break;
+        case "name":
+          sort = { name: 1 };
+          break;
+        default:
+          sort = null;
+      }
+      return User.findOne({ username }).populate({
+        path: "communities",
+        options: sort,
+      });
     },
-    communities: async (parent, { name }) => {
+    communities: async (parent, { name, sort }) => {
       const params = name ? { name } : {};
-      return Community.find(params).populate("endeavors").populate("users");
-      // .sort({ createdAt: -1 });
+      switch (sort) {
+        case "popular":
+          sort = { userCount: -1 };
+          break;
+        case "title":
+          sort = { name: 1 };
+          break;
+        default:
+          sort = null;
+      }
+      return Community.find(params)
+        .populate("endeavors")
+        .populate("users")
+        .sort(sort);
     },
     community: async (parent, { communityId }) => {
       return Community.findOne({ _id: communityId }).populate("endeavors");
@@ -21,9 +46,19 @@ const resolvers = {
     communityByUrl: async (parent, { url }) => {
       return Community.findOne({ url }).populate("endeavors").populate("users");
     },
-    endeavors: async (parent, { communityId }) => {
+    endeavors: async (parent, { communityId, sort }) => {
       const params = communityId ? { communityId } : {};
-      return Endeavor.find(params).populate("users");
+      switch (sort) {
+        case "popular":
+          sort = { userCount: -1 };
+          break;
+        case "title":
+          sort = { title: 1 };
+          break;
+        default:
+          sort = null;
+      }
+      return Endeavor.find(params).populate("users").sort(sort);
     },
     endeavor: async (parent, { endeavorId }) => {
       return Endeavor.findOne({ _id: endeavorId }).populate("users");

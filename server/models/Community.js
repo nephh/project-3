@@ -17,6 +17,9 @@ const communitySchema = new Schema({
     required: true,
     trim: true,
   },
+  userCount: {
+    type: Number,
+  },
   // userLimit: {
   //   type: Number,
   // },
@@ -42,13 +45,16 @@ const communitySchema = new Schema({
 
 //   next();
 // });
+communitySchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("users")) {
+    this.userCount = this.users.length;
+  }
+
+  next();
+});
 
 communitySchema.virtual("url").get(function () {
   return this.name.toLowerCase().split(" ").join("-");
-});
-
-communitySchema.virtual("userCount").get(function () {
-  return this.users.length;
 });
 
 communitySchema.virtual("endeavorCount").get(function () {

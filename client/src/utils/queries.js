@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_COMMUNITIES = gql`
-  query Communities {
-    communities {
+  query Communities($sort: String) {
+    communities(sort: $sort) {
       creator
       description
       name
@@ -51,8 +51,8 @@ export const QUERY_ENDEAVORS = gql`
 `;
 
 export const DASHBOARD_QUERY = gql`
-  query Dashboard($username: String!, $communityId: ID) {
-    endeavors(communityId: $communityId) {
+  query Dashboard($username: String!, $communityId: ID, $sort: String) {
+    endeavors(communityId: $communityId, sort: $sort) {
       _id
       title
       community
@@ -62,11 +62,12 @@ export const DASHBOARD_QUERY = gql`
       userCount
       communityUrl
     }
-    user(username: $username) {
+    user(username: $username, sort: $sort) {
       username
       communities {
         name
         userCount
+        url
       }
     }
   }
