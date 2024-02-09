@@ -1,4 +1,4 @@
-import Slider from "../components/Slider";
+// import Slider from "../components/Slider";
 
 export default function Home() {
   return (
@@ -28,7 +28,7 @@ export default function Home() {
         vitae lorem tortor. In elementum ultricies tempus. Interdum et malesuada
         fames ac ante ipsum primis in faucibus.
       </p>
-      <Slider />
+      {/* <Slider /> */}
     </div>
 
   );

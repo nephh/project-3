@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import Slider from "../components/Slider";
 
 export default function Login() {
   const [formState, setFormState] = useState({
@@ -42,7 +43,7 @@ export default function Login() {
   return (
     <div className="flex min-h-screen items-center bg-white dark:bg-gray-900">
       <div className="container mx-auto">
-        <div className="mx-auto my-10 max-w-md">
+        <div className="mx-auto my-3 max-w-md">
           <div className="text-center">
             <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">
               Sign in
@@ -108,6 +109,7 @@ export default function Login() {
             </form>
           </div>
         </div>
+        <Slider />
       </div>
     </div>
   );

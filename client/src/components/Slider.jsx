@@ -37,10 +37,14 @@ const testData = [
 
 const Slider = () => {
   return (
-    <div className='flex items-center justify-center flex-col bg-zinc-700'>
+    <div className='flex items-center justify-center flex-col bg-zinc-700 py-3'>
         <Swiper 
         breakpoints={{
-            340: {
+            300: {
+                slidesPerView: 1,
+                spaceBetween: 15
+            },
+            480: {
                 slidesPerView: 2,
                 spaceBetween: 15
             },
@@ -73,7 +77,7 @@ const Slider = () => {
         >
         {testData.map((item)=> (
             <SwiperSlide key={item.title}>
-                <div className='flex flex-col gap-6 group relative shadow-lg text-white rounded-xl border-2 border-white px-6 py-8 h-[320px] w-[215px] lg:h-[400px] lg:w-[350px] overflow-hidden cursor-pointer'>
+                <div className='flex flex-col gap-6 group relative shadow-lg text-white rounded-xl border-2 border-white px-6 py-8 h-[300px] w-[300px] lg:h-[300px] lg:w-[375px] overflow-hidden cursor-pointer'>
                     {/* bg image container */}
                     <div className='absolute inset-0 bg-lime-700 bg-center'/>
                     <div className='relative flex flex-col gap-3'>
