@@ -40,11 +40,11 @@ const resolvers = {
         .populate("users")
         .sort(sort);
     },
-    community: async (parent, { communityId }) => {
-      return Community.findOne({ _id: communityId }).populate("endeavors");
+    community: async (parent, { url }) => {
+      return Community.findOne({ url }).populate("endeavors").populate("users");
     },
-    endeavors: async (parent, { communityId, sort }) => {
-      const params = communityId ? { communityId } : {};
+    endeavors: async (parent, { communityUrl, sort }) => {
+      const params = communityUrl ? { communityUrl } : {};
       switch (sort) {
         case "popular":
           sort = { userCount: -1 };
