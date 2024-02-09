@@ -18,6 +18,9 @@ const resolvers = {
     community: async (parent, { communityId }) => {
       return Community.findOne({ _id: communityId }).populate("endeavors");
     },
+    communityByUrl: async (parent, { url }) => {
+      return Community.findOne({ url }).populate("endeavors").populate("users");
+    },
     endeavors: async (parent, { communityId }) => {
       const params = communityId ? { communityId } : {};
       return Endeavor.find(params).populate("users");

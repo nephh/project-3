@@ -1,8 +1,18 @@
+import { useQuery } from "@apollo/client";
+import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import { QUERY_COMMUNITY_BY_URL } from '../utils/queries';
+
 export default function Community() {
+  // const { loading, data } = useQuery(QUERY_COMMUNITY_BY_URL, {
+  //   variables: { url:  }
+  // })
+
   return (
     <div className="overflow-x-hidden bg-gray-100">
         <div className="px-6 py-8">
             <div className="container flex justify-between mx-auto">
+                {/* community info*/}
                 <div className="w-full lg:w-8/12">
                     <div className="flex items-center justify-between">
                         <h1 className="text-xl font-bold text-gray-700 md:text-2xl">Main Community Page</h1>

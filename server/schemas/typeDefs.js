@@ -48,6 +48,7 @@ const typeDefs = `
     user(username: String!): User
     communities(username: String): [Community]
     community(communityId: ID!): Community
+    communityByUrl(url: String!): Community
     endeavors(communityId: ID): [Endeavor]
     endeavor(endeavorId: ID!): Endeavor
   }
