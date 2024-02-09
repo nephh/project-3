@@ -1,13 +1,38 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+
+import { ADD_ENDEAVOR } from "../utils/mutations";
+
+import Auth from "../utils/auth";
+
 
 export default function Create() {
   const [endeavor, setEndeavor] = useState("");
   const [message, setMessage] = useState("");
 
-  return (
-    <div>
-      <h1 className="text-2xl text-center text-amber-400 py-10">Create New Endeavor!</h1>
+  const [addEndeavor, { error }] = useMutation(ADD_ENDEAVOR);
 
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addEndeavor({
+        variables: { ...endeavor },
+      });
+
+      Auth.login(data.addEndeavor.token);
+    } catch (err) {
+      console.error(err);
+      setMessage("Something went wrong!");
+    }
+  };
+
+  return (
+    <div className="h-screen">
+      
+      <h1 className="text-2xl text-center text-amber-400 py-10">Create New Endeavor!</h1>
+      {Auth.loggedIn() ? (
       <form className="mx-auto max-w-sm">
         <div className="mb-5">
           <label
@@ -112,6 +137,14 @@ export default function Create() {
           Create Endeavor
         </button>
       </form>
+      ) : (
+        <div className="text-2xl text-center text-amber-400 py-10">
+          <p>You need to be logged in Create a Community or Endeavor.</p> 
+          <p>  Please{' '}
+          <Link to="/login" className="text-white">login</Link> or <Link to="/signup" className="text-white">signup.</Link>
+        </p>
+        </div>
+      )}
     </div>
   );
 }

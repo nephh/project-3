@@ -23,3 +23,15 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+//Test add endeavor
+export const ADD_ENDEAVOR = gql`
+  mutation addEndeavor($title: String!, $content: String!, $community: String!) {
+    addEndeavor(title: $title, content: $content, community: $community) {
+      _id
+      title
+      content
+      community
+    }
+  }
+`;
