@@ -35,9 +35,10 @@ const testData = [
     
 ]
 
-const Slider = () => {
+const Slider = ({ endeavors }) => {
+    console.log(endeavors)
   return (
-    <div className='flex items-center justify-center flex-col bg-zinc-700 py-3'>
+    <div className='flex items-center justify-center flex-col dark:bg-gray-900 py-3'>
         <Swiper 
         breakpoints={{
             300: {
@@ -75,7 +76,7 @@ const Slider = () => {
         modules={[EffectCoverflow, Pagination]}
         className='max-w-[90%] lg:max-w-[80%] py-8'
         >
-        {testData.map((item)=> (
+        {endeavors.map((item)=> (
             <SwiperSlide key={item.title}>
                 <div className='flex flex-col gap-6 group relative shadow-lg text-white rounded-xl border-2 border-white px-6 py-8 h-[300px] w-[300px] lg:h-[300px] lg:w-[375px] overflow-hidden cursor-pointer'>
                     {/* bg image container */}
@@ -83,6 +84,7 @@ const Slider = () => {
                     <div className='relative flex flex-col gap-3'>
                         <h1 className='text-2xl font-bold text-black'>{item.title}</h1>
                         <p className='text-black'>{item.content}</p>
+                        <p className='text-white'>{item.community}</p>
                     </div>
 
                 </div>
