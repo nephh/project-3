@@ -23,6 +23,9 @@ const endeavorSchema = new Schema({
     required: true,
     trim: true,
   },
+  userCount: {
+    type: Number,
+  },
   users: [
     {
       type: Schema.Types.ObjectId,
@@ -52,12 +55,16 @@ const endeavorSchema = new Schema({
   ],
 });
 
-endeavorSchema.virtual("communityUrl").get(function () {
-  return this.community.toLowerCase().split(" ").join("-");
+endeavorSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("users")) {
+    this.userCount = this.users.length;
+  }
+
+  next();
 });
 
-endeavorSchema.virtual("userCount").get(function () {
-  return this.users.length;
+endeavorSchema.virtual("communityUrl").get(function () {
+  return this.community.toLowerCase().split(" ").join("-");
 });
 
 endeavorSchema.virtual("commentCount").get(function () {
