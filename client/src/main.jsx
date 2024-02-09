@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         element: <Community />,
       },
       {
-        path: "endeavor",
+        path: "community/:communityUrl/:endeavorId",
         element: <Endeavor />,
       },
       {
