@@ -43,8 +43,8 @@ const resolvers = {
     community: async (parent, { communityId }) => {
       return Community.findOne({ _id: communityId }).populate("endeavors");
     },
-    endeavors: async (parent, { communityId, sort }) => {
-      const params = communityId ? { communityId } : {};
+    endeavors: async (parent, { communityUrl, sort }) => {
+      const params = communityUrl ? { communityUrl } : {};
       switch (sort) {
         case "popular":
           sort = { userCount: -1 };
