@@ -3,37 +3,57 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { ADD_ENDEAVOR } from "../utils/mutations";
+import { QUERY_ME } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
 
 export default function Create() {
-  const [endeavor, setEndeavor] = useState("");
+  const [endeavor, setEndeavor] = useState({
+    title: '',
+    content: '',
+    community: '',
+    author: '',
+  });
   const [message, setMessage] = useState("");
 
-  const [addEndeavor, { error }] = useMutation(ADD_ENDEAVOR);
+  const [addEndeavor, { error }] = useMutation(ADD_ENDEAVOR,{
+    refetchQueries: [QUERY_ME, "me"],
+  }
+    );
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const { data } = await addEndeavor({
-        variables: { ...endeavor },
+        variables: { ...endeavor,
+          author: Auth.getUserInfo().authenticatedPerson.username
+         },
       });
-
-      Auth.login(data.addEndeavor.token);
     } catch (err) {
       console.error(err);
       setMessage("Something went wrong!");
     }
   };
 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setEndeavor({
+      ...endeavor,
+      [name]: value,
+    });
+  }; 
+
   return (
     <div className="h-screen">
       
       <h1 className="text-2xl text-center text-amber-400 py-10">Create New Endeavor!</h1>
       {Auth.loggedIn() ? (
-      <form className="mx-auto max-w-sm">
+      <form 
+          className="mx-auto max-w-sm"
+          onSubmit={handleFormSubmit}
+      >
         <div className="mb-5">
           <label
             htmlFor="name"
@@ -43,9 +63,12 @@ export default function Create() {
           </label>
           <input
             type="name"
+            name="title"
             id=""
             className="dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder="Type here"
+            value={endeavor.title}
+            onChange={handleInputChange}
             required
           />
         </div>
@@ -58,9 +81,12 @@ export default function Create() {
           </label>
           <textarea
             id="message"
+            name="content"
             rows="4"
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder="Describe endeavor here..."
+            value={endeavor.content}
+            onChange={handleInputChange}
             required
           ></textarea>
         </div>
@@ -73,7 +99,10 @@ export default function Create() {
           </label>
           <select
             id="community"
+            name="community"
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            value={endeavor.community}
+            onChange={handleInputChange}
           >
             <option>Gaming</option>
             <option>Events</option>

@@ -5,6 +5,7 @@ const typeDefs = `
     email: String
     password: String
     communities: [Community]!
+    endeavors: [Endeavor]!
   }
 
   type Community {
@@ -50,6 +51,7 @@ const typeDefs = `
     community(communityId: ID!): Community
     endeavors(communityId: ID, sort: String): [Endeavor]
     endeavor(endeavorId: ID!): Endeavor
+    me: User
   }
 
   type Mutation {

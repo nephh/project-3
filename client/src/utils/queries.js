@@ -50,3 +50,34 @@ export const DASHBOARD_QUERY = gql`
     }
   }
 `;
+
+//Test query me
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      username
+      email
+      communities {
+        _id
+        name
+        description
+        creator
+        url
+        userCount
+        endeavorCount
+      }
+      endeavors {
+        _id
+        title
+        content
+        author
+        community
+        communityUrl
+        userCount
+        commentCount
+      }
+    }
+  }
+`;
+
