@@ -46,7 +46,7 @@ const typeDefs = `
   type Query {
     users: [User]
     user(username: String!, sort: String): User
-    communities(username: String): [Community]
+    communities(username: String, sort: String): [Community]
     community(communityId: ID!): Community
     endeavors(communityId: ID, sort: String): [Endeavor]
     endeavor(endeavorId: ID!): Endeavor

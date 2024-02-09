@@ -6,7 +6,7 @@ import Error from "./pages/Error.jsx";
 import Home from "./pages/Home.jsx";
 import Create from "./pages/Create.jsx";
 import Community from "./pages/Community.jsx";
-import Browse from "./pages/Browse.jsx";
+import Communities from "./pages/Communities.jsx";
 import "./index.css";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "communities",
+        path: "community/:communityUrl",
         element: <Community />,
       },
       {
@@ -40,8 +40,8 @@ const router = createBrowserRouter([
         element: <Create />,
       },
       {
-        path: "browse",
-        element: <Browse />,
+        path: "communities",
+        element: <Communities />,
       },
       {
         path: "dashboard",
