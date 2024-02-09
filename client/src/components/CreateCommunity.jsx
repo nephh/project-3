@@ -1,39 +1,48 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMUNITY } from "../utils/mutations";
+import { QUERY_SINGLE_USER } from "../utils/queries";
 import Auth from "../utils/auth";
 
 const CreateCommunity = () => {
-  const [communityName, setCommunityName] = useState({
+  const user = Auth.getUserInfo();
+  const [formState, setFormState] = useState({
     name: "",
     description: "",
   });
-  //const [description, setDescription] = useState("");
-  const [addCommunity] = useMutation(ADD_COMMUNITY);
+  const [addCommunity] = useMutation(ADD_COMMUNITY, {
+    refetchQueries: [
+      { query: QUERY_SINGLE_USER, variables: { username: user.data.username } },
+    ],
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // ISSUE auth validation not working, tried without as well
     try {
-       const { data } = await addCommunity({
-        variables: { ...communityName,
-            //Auth attempt
-        creator: Auth.getUserInfo().data._id },
+      const { data } = await addCommunity({
+        variables: {
+          ...formState,
+          creator: user.data.username,
+        },
       });
 
-       //Auth.getUserInfo(data.addCommunity.token);
-        setCommunityName({
-            name: "",
-            description: "",
-        });
+      setFormState({
+        name: "",
+        description: "",
+      });
     } catch (err) {
-        console.error(err);
+      console.error(err);
     }
-
-    console.log("Community Name:", communityName.name);
-    console.log("Description:", communityName.description);
   };
-
 
   return (
     <div className="py-10">
@@ -53,9 +62,10 @@ const CreateCommunity = () => {
           </label>
           <input
             type="text"
-            id="communityName"
-            value={communityName.name}
-            onChange={(e) => setCommunityName({ ...communityName, name: e.target.value })}
+            id="name"
+            name="name"
+            value={formState.name}
+            onChange={handleChange}
             className="dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder="Type here"
             required
@@ -70,8 +80,9 @@ const CreateCommunity = () => {
           </label>
           <textarea
             id="description"
-            value={communityName.description}
-            onChange={(e) => setCommunityName({ ...communityName, description: e.target.value })}
+            name="description"
+            onChange={handleChange}
+            value={formState.description}
             rows="4"
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder="Describe community here..."
