@@ -7,7 +7,13 @@ import { ADD_ENDEAVOR } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 export default function CreateEndeavor() {
-  const [endeavor, setEndeavor] = useState("");
+  const [endeavor, setEndeavor] = useState(
+    {
+      title: "",
+      content: "",
+      community: "",
+    }
+  );
   const [message, setMessage] = useState("");
 
   const [addEndeavor, { error }] = useMutation(ADD_ENDEAVOR);
@@ -19,17 +25,27 @@ export default function CreateEndeavor() {
       const { data } = await addEndeavor({
         variables: { ...endeavor },
       });
-
-      Auth.login(data.addEndeavor.token);
+      //Auth attempt
+      Auth.getUserInfo(data.addEndeavor.token);
+      setEndeavor({
+        title: "",
+        content: "",
+        community: "",
+      });
     } catch (err) {
       console.error(err);
       setMessage("Something went wrong!");
     }
+    console.log("Endeavor Name:", endeavor.title);
+    console.log("Description:", endeavor.content);
+    console.log("Community:", endeavor.community);
   };
 
   return (
     <div className="py-8 ">
-      <form className="mx-auto max-w-md rounded bg-[conic-gradient(at_right,_var(--tw-gradient-stops))] from-indigo-200 via-slate-600 to-indigo-200 px-8 pb-8 pt-6 shadow-md">
+      <form className="mx-auto max-w-md rounded bg-[conic-gradient(at_right,_var(--tw-gradient-stops))] from-indigo-200 via-slate-600 to-indigo-200 px-8 pb-8 pt-6 shadow-md"
+        onSubmit={handleFormSubmit}
+      >
         <h1 className="border-b-2 border-neutral-100 pb-5 text-center text-2xl text-orange-700 font-extrabold drop-shadow-lg">
           Create New Endeavor!
         </h1>
@@ -43,6 +59,8 @@ export default function CreateEndeavor() {
           <input
             type="name"
             id="endeavorName"
+            value={endeavor.title}
+            onChange={(e) => setEndeavor({ ...endeavor, title: e.target.value })}
             className="dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder="Type here"
             required
@@ -58,6 +76,8 @@ export default function CreateEndeavor() {
           <textarea
             id="message"
             rows="4"
+            value={endeavor.content}
+            onChange={(e) => setEndeavor({ ...endeavor, content: e.target.value })}
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder="Describe endeavor here..."
             required
@@ -72,6 +92,8 @@ export default function CreateEndeavor() {
           </label>
           <select
             id="community"
+            value={endeavor.community}
+            onChange={(e) => setEndeavor({ ...endeavor, community: e.target.value })}
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
           >
             <option>Gaming</option>
