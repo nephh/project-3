@@ -35,3 +35,14 @@ export const ADD_ENDEAVOR = gql`
     }
   }
 `;
+
+//Test add community
+export const ADD_COMMUNITY = gql`
+  mutation addCommunity($name: String!, $description: String!) {
+    addCommunity(name: $name, description: $description) {
+      _id
+      name
+      description
+    }
+  }
+`;
