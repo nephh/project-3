@@ -95,3 +95,19 @@ export const QUERY_SINGLE_COMMUNITY = gql`
     }
   }
 `;
+
+export const QUERY_SINGLE_USER = gql`
+  query Query($username: String!) {
+    user(username: $username) {
+      communities {
+        _id
+        name
+        url
+        endeavorCount
+        description
+        userCount
+        creator
+      }
+    }
+  }
+`;
