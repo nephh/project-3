@@ -10,6 +10,7 @@ import Browse from "./pages/Browse.jsx";
 import "./index.css";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
+import Endeavor from "./pages/Endeavor.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "communities",
         element: <Community />,
+      },
+      {
+        path: "endeavor",
+        element: <Endeavor />,
       },
       {
         path: "create",
