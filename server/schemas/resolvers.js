@@ -23,9 +23,22 @@ const resolvers = {
         options: sort,
       });
     },
-    communities: async (parent, { name }) => {
+    communities: async (parent, { name, sort }) => {
       const params = name ? { name } : {};
-      return Community.find(params).populate("endeavors").populate("users");
+      switch (sort) {
+        case "popular":
+          sort = { userCount: -1 };
+          break;
+        case "title":
+          sort = { name: 1 };
+          break;
+        default:
+          sort = null;
+      }
+      return Community.find(params)
+        .populate("endeavors")
+        .populate("users")
+        .sort(sort);
     },
     community: async (parent, { communityId }) => {
       return Community.findOne({ _id: communityId }).populate("endeavors");

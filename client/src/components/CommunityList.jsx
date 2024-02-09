@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
-export default function DashboardList({ endeavors, sort }) {
+export default function CommunityList({ communities, sort }) {
   return (
     <>
       <div className="flex w-8/12 flex-col">
-        <h1 className="mb-4 text-xl font-bold text-zinc-200">
-          Recent Endeavors
+        <h1 className="mb-4 text-center text-xl font-bold text-zinc-200">
+          Find your new favorite community and start an Endeavor!
         </h1>
         <div>
           {/* <button
@@ -28,35 +28,35 @@ export default function DashboardList({ endeavors, sort }) {
             Alphabetical Order
           </button>
         </div>
-        {endeavors.map((endeavor, index) => (
+        {communities.map((community, index) => (
           <div
             key={index}
             className="mb-4 w-full rounded-lg bg-zinc-900 px-10 py-6 shadow-md"
           >
-            <div className="flex items-center justify-between">
+            {/* <div className="flex items-center justify-between">
               <span className="font-light text-zinc-400">
-                {endeavor.community}
+                {community.name}
               </span>
-            </div>
+            </div> */}
             <div className="mt-2">
               <Link
-                to={`/community/${endeavor.communityUrl}/${endeavor._id}`}
+                to={`/community/${community.url}`}
                 className="text-2xl font-bold text-zinc-200 hover:underline"
               >
-                {endeavor.title}
+                {community.name}
               </Link>
               <p className="mt-2 overflow-hidden text-ellipsis text-zinc-300">
-                {endeavor.content}
+                {community.description}
               </p>
             </div>
             <div className="mt-4 flex items-center justify-between">
               <p className="text-zinc-400">
                 Users:{" "}
-                <span className="font-semibold">{endeavor.userCount}</span>
+                <span className="font-semibold">{community.userCount}</span>
               </p>
               <div>
                 <h1 className="font-bold text-zinc-400 hover:underline">
-                  Author: {endeavor.author}
+                  Creator: {community.creator}
                 </h1>
               </div>
             </div>

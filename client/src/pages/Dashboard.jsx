@@ -6,6 +6,9 @@ import Auth from "../utils/auth";
 import { useState } from "react";
 
 export default function Dashboard() {
+  if (!Auth.loggedIn()) {
+    window.location.assign("/login");
+  }
   const [sort, setSort] = useState("");
   const { data: user } = Auth.getUserInfo();
   const { loading, data } = useQuery(DASHBOARD_QUERY, {
