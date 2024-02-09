@@ -11,12 +11,12 @@ function NavTabs() {
     // TEST Navbar
     <nav className="border-gray-200 bg-white dark:bg-gray-900">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link to={Auth.loggedIn() ? "/dashboard" : "/login"} className="flex items-center space-x-3 rtl:space-x-reverse">
           {/* <img src="" className="h-8" alt="Endeveor image" /> */}
           <span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white">
             Endeavor
           </span>
-        </a>
+        </Link>
         <div className="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
           {Auth.loggedIn() ? (
             <Link to={"/login"}>
@@ -71,7 +71,7 @@ function NavTabs() {
           <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900">
             <li>
               <Link
-                to={Auth.loggedIn() ? "/dashboard" : "/home"}
+                to={Auth.loggedIn() ? "/dashboard" : "/login"}
                 className={`${currentPage === "dashboard" ? "text-cyan-600" : "text-zinc-300"} 
                   block rounded px-3 py-2 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-cyan-700`}
                 aria-current="page"
