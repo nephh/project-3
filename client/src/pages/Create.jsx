@@ -29,7 +29,7 @@ export default function Create() {
   };
 
   return (
-    <div>
+    <div className="h-screen">
       
       <h1 className="text-2xl text-center text-amber-400 py-10">Create New Endeavor!</h1>
       {Auth.loggedIn() ? (
@@ -138,10 +138,12 @@ export default function Create() {
         </button>
       </form>
       ) : (
-        <p>
-          You need to be logged in to share your thoughts. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+        <div className="text-2xl text-center text-amber-400 py-10">
+          <p>You need to be logged in Create a Community or Endeavor.</p> 
+          <p>  Please{' '}
+          <Link to="/login" className="text-white">login</Link> or <Link to="/signup" className="text-white">signup.</Link>
         </p>
+        </div>
       )}
     </div>
   );
