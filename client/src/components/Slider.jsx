@@ -36,7 +36,7 @@ const testData = [
 ]
 
 const Slider = ({ endeavors }) => {
-    console.log(endeavors)
+    //console.log(endeavors)
   return (
     <div className='flex items-center justify-center flex-col dark:bg-gray-900 py-3'>
         <Swiper 
