@@ -57,7 +57,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addCommunity(name: String!, description: String): Community
     addEndeavor(title: String!, content: String, community: String!): Endeavor
-    addUserToCommunity(communityId: ID!): User
+    joinCommunity(communityId: ID!): User
   }
 `;
 

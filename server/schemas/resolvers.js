@@ -93,7 +93,6 @@ const resolvers = {
       return { token, user };
     },
     addCommunity: async (parent, { name, description }, context) => {
-      console.log(context.user);
       if (context.user) {
         const community = await Community.create({
           name,
@@ -130,14 +129,12 @@ const resolvers = {
       throw AuthenticationError;
       ("You need to be logged in!");
     },
-    addUserToCommunity: async (parent, { communityId }, context) => {
+    joinCommunity: async (parent, { communityId }, context) => {
+      console.log(context.user._id);
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          await User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $addToSet: { communities: communityId } },
-          ),
+          { $addToSet: { communities: communityId } },
         );
 
         await Community.findOneAndUpdate(
