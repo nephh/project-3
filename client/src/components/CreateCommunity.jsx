@@ -39,6 +39,8 @@ const CreateCommunity = () => {
         name: "",
         description: "",
       });
+      //TEST take to created community page, ISSUE showing undefined for url
+      //window.location.replace(`/community/${data.addCommunity.url}`);
     } catch (err) {
       console.error(err);
     }
