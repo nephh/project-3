@@ -6,7 +6,10 @@ import CommunityList from "../components/CommunityList";
 import Auth from "../utils/auth";
 
 export default function Communities() {
-  const user = Auth.getUserInfo().data.username;
+  let user;
+  if (Auth.loggedIn()) {
+    user = Auth.getUserInfo()?.data.username;
+  }
   const [sort, setSort] = useState("");
   const { loading, data } = useQuery(QUERY_COMMUNITIES, {
     variables: { sort: sort },
@@ -15,6 +18,7 @@ export default function Communities() {
   const [joinCommunity, { error }] = useMutation(JOIN_COMMUNITY, {
     refetchQueries: [
       { query: DASHBOARD_QUERY, variables: { username: user, sort } },
+      { query: QUERY_COMMUNITIES },
     ],
   });
 
@@ -23,6 +27,7 @@ export default function Communities() {
       const { data } = await joinCommunity({
         variables: { communityId: communityId },
       });
+      return data;
     } catch (e) {
       console.error(e);
       console.log(error);
@@ -37,10 +42,6 @@ export default function Communities() {
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="mt-4 text-5xl font-bold text-zinc-200">
-        {/* Welcome {user.username}! */}
-      </h2>
-
       <div className="mt-4 flex flex-row justify-evenly">
         <CommunityList communities={communities} sort={setSort} join={onJoin} />
       </div>
