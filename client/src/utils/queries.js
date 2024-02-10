@@ -14,8 +14,8 @@ export const QUERY_COMMUNITIES = gql`
 `;
 
 export const QUERY_ENDEAVORS = gql`
-  query Communities($communityId: ID) {
-    endeavors(communityId: $communityId) {
+  query Endeavors($communityUrl: String) {
+    endeavors(communityUrl: $communityUrl) {
       _id
       title
       community
@@ -29,8 +29,8 @@ export const QUERY_ENDEAVORS = gql`
 `;
 
 export const DASHBOARD_QUERY = gql`
-  query Dashboard($username: String!, $communityId: ID, $sort: String) {
-    endeavors(communityId: $communityId, sort: $sort) {
+  query Dashboard($username: String!, $communityUrl: String, $sort: String) {
+    endeavors(communityUrl: $communityUrl, sort: $sort) {
       _id
       title
       community
@@ -46,6 +46,67 @@ export const DASHBOARD_QUERY = gql`
         name
         userCount
         url
+      }
+    }
+  }
+`;
+
+export const QUERY_SINGLE_ENDEAVOR = gql`
+  query Endeavor($endeavorId: ID!) {
+    endeavor(endeavorId: $endeavorId) {
+      title
+      content
+      author
+      community
+      communityUrl
+      userCount
+      comments {
+        commentText
+        commentAuthor
+      }
+    }
+  }
+`;
+
+export const QUERY_SINGLE_COMMUNITY = gql`
+  query Community($communityUrl: String!) {
+    community(communityUrl: $communityUrl) {
+      name
+      description
+      creator
+      url
+      userCount
+      endeavorCount
+      users {
+        username
+      }
+      endeavors {
+        title
+        content
+        author
+        community
+        userCount
+        communityUrl
+        comments {
+          commentText
+          commentAuthor
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_SINGLE_USER = gql`
+  query Query($username: String!) {
+    user(username: $username) {
+      communities {
+        _id
+        name
+        url
+        endeavorCount
+        description
+        userCount
+        creator
       }
     }
   }

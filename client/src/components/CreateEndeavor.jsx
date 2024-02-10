@@ -1,66 +1,85 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 
 import { ADD_ENDEAVOR } from "../utils/mutations";
+import { QUERY_SINGLE_USER } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
 export default function CreateEndeavor() {
-  const [endeavor, setEndeavor] = useState(
-    {
-      title: "",
-      content: "",
-      community: "",
-    }
-  );
-  const [message, setMessage] = useState("");
-
+  const user = Auth.getUserInfo();
   const [addEndeavor, { error }] = useMutation(ADD_ENDEAVOR);
+  const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+    variables: { username: user.data.username },
+  });
+  const communities = data?.user.communities || [];
 
-  const handleFormSubmit = async (event) => {
+  const [formState, setFormState] = useState({
+    title: "",
+    content: "",
+    community: "",
+  });
+
+  useEffect(() => {
+    if (communities.length > 0) {
+      setFormState((prevState) => ({
+        ...prevState,
+        community: communities[0].name,
+      }));
+    }
+  }, [communities]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const { data } = await addEndeavor({
-        variables: { ...endeavor },
+        variables: {
+          ...formState,
+          author: user.data.username,
+        },
       });
-      //Auth attempt
-      Auth.getUserInfo(data.addEndeavor.token);
-      setEndeavor({
+
+      setFormState({
         title: "",
         content: "",
-        community: "",
       });
     } catch (err) {
       console.error(err);
-      setMessage("Something went wrong!");
     }
-    console.log("Endeavor Name:", endeavor.title);
-    console.log("Description:", endeavor.content);
-    console.log("Community:", endeavor.community);
   };
 
   return (
     <div className="py-8 ">
-      <form className="mx-auto max-w-md rounded bg-[conic-gradient(at_right,_var(--tw-gradient-stops))] from-indigo-200 via-slate-600 to-indigo-200 px-8 pb-8 pt-6 shadow-md"
-        onSubmit={handleFormSubmit}
+      <form
+        className="mx-auto max-w-md rounded bg-[conic-gradient(at_right,_var(--tw-gradient-stops))] from-indigo-200 via-slate-600 to-indigo-200 px-8 pb-8 pt-6 shadow-md"
+        onSubmit={handleSubmit}
       >
-        <h1 className="border-b-2 border-neutral-100 pb-5 text-center text-2xl text-orange-700 font-extrabold drop-shadow-lg">
+        <h1 className="border-b-2 border-neutral-100 pb-5 text-center text-2xl font-extrabold text-orange-700 drop-shadow-lg">
           Create New Endeavor!
         </h1>
         <div className="mb-5">
           <label
-            htmlFor="endeavorName"
-            className="pt-3 mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            htmlFor="title"
+            className="mb-2 block pt-3 text-sm font-medium text-gray-900 dark:text-white"
           >
             Endeavor Name
           </label>
           <input
-            type="name"
-            id="endeavorName"
-            value={endeavor.title}
-            onChange={(e) => setEndeavor({ ...endeavor, title: e.target.value })}
+            type="text"
+            id="title"
+            name="title"
+            value={formState.title}
+            onChange={handleChange}
             className="dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder="Type here"
             required
@@ -68,16 +87,17 @@ export default function CreateEndeavor() {
         </div>
         <div className="mb-5">
           <label
-            htmlFor="message"
+            htmlFor="content"
             className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
           >
             Description
           </label>
           <textarea
-            id="message"
+            id="content"
+            name="content"
             rows="4"
-            value={endeavor.content}
-            onChange={(e) => setEndeavor({ ...endeavor, content: e.target.value })}
+            value={formState.content}
+            onChange={handleChange}
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder="Describe endeavor here..."
             required
@@ -92,18 +112,14 @@ export default function CreateEndeavor() {
           </label>
           <select
             id="community"
-            value={endeavor.community}
-            onChange={(e) => setEndeavor({ ...endeavor, community: e.target.value })}
+            name="community"
+            value={formState.community}
+            onChange={handleChange}
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
           >
-            <option>Gaming</option>
-            <option>Events</option>
-            <option>Pets</option>
-            <option>Music</option>
-            <option>Creative</option>
-            <option>Volunteer</option>
-            <option>Tech</option>
-            <option>Charity</option>
+            {communities.map((community) => {
+              return <option key={community._id}>{community.name}</option>;
+            })}
           </select>
         </div>
 
