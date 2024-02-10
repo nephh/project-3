@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import JoinButton from "./JoinButton";
+import Auth from "../utils/auth";
 
 export default function CommunityList({ communities, sort, join }) {
   return (
@@ -41,13 +43,14 @@ export default function CommunityList({ communities, sort, join }) {
                   {community.name}
                 </Link>
 
-                <button
-                  onClick={() => join(community._id)}
-                  className="mt-1 px-4 py-2 text-xs font-semibold text-zinc-300 text-opacity-50"
-                  value={community._id}
-                >
-                  Join Community
-                </button>
+                {Auth.loggedIn() && (
+                  <JoinButton
+                    join={join}
+                    communityId={community._id}
+                    user={Auth.getUserInfo().data.username}
+                    users={community.users}
+                  />
+                )}
               </div>
               <p className="mt-2 overflow-hidden text-ellipsis text-zinc-300">
                 {community.description}

@@ -6,7 +6,10 @@ import CommunityList from "../components/CommunityList";
 import Auth from "../utils/auth";
 
 export default function Communities() {
-  const user = Auth.getUserInfo().data.username;
+  let user;
+  if (Auth.loggedIn()) {
+    user = Auth.getUserInfo()?.data.username;
+  }
   const [sort, setSort] = useState("");
   const { loading, data } = useQuery(QUERY_COMMUNITIES, {
     variables: { sort: sort },
@@ -23,6 +26,7 @@ export default function Communities() {
       const { data } = await joinCommunity({
         variables: { communityId: communityId },
       });
+      return data;
     } catch (e) {
       console.error(e);
       console.log(error);

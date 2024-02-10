@@ -137,12 +137,12 @@ const resolvers = {
           { $addToSet: { communities: communityId } },
         );
 
-        await Community.findOneAndUpdate(
+        const updatedCommunity = await Community.findOneAndUpdate(
           { _id: communityId },
           { $addToSet: { users: context.user._id } },
-        );
+        ).populate("users");
 
-        return updatedUser;
+        return updatedCommunity;
       }
       throw AuthenticationError;
       ("You need to be logged in!");
