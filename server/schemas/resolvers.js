@@ -93,6 +93,7 @@ const resolvers = {
       return { token, user };
     },
     addCommunity: async (parent, { name, description }, context) => {
+      console.log(context.user);
       if (context.user) {
         const community = await Community.create({
           name,
@@ -125,6 +126,26 @@ const resolvers = {
         );
 
         return endeavor;
+      }
+      throw AuthenticationError;
+      ("You need to be logged in!");
+    },
+    addUserToCommunity: async (parent, { communityId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { communities: communityId } },
+          ),
+        );
+
+        await Community.findOneAndUpdate(
+          { _id: communityId },
+          { $addToSet: { users: context.user._id } },
+        );
+
+        return updatedUser;
       }
       throw AuthenticationError;
       ("You need to be logged in!");
