@@ -3,6 +3,7 @@ import { gql } from "@apollo/client";
 export const QUERY_COMMUNITIES = gql`
   query Communities($sort: String) {
     communities(sort: $sort) {
+      _id
       creator
       description
       name

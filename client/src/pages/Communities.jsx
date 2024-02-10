@@ -1,14 +1,33 @@
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { useState } from "react";
-import { QUERY_COMMUNITIES } from "../utils/queries";
+import { DASHBOARD_QUERY, QUERY_COMMUNITIES } from "../utils/queries";
+import { JOIN_COMMUNITY } from "../utils/mutations";
 import CommunityList from "../components/CommunityList";
 import Auth from "../utils/auth";
 
-export default function Dashboard() {
+export default function Communities() {
+  const user = Auth.getUserInfo().data.username;
   const [sort, setSort] = useState("");
   const { loading, data } = useQuery(QUERY_COMMUNITIES, {
     variables: { sort: sort },
   });
+
+  const [joinCommunity, { error }] = useMutation(JOIN_COMMUNITY, {
+    refetchQueries: [
+      { query: DASHBOARD_QUERY, variables: { username: user, sort } },
+    ],
+  });
+
+  async function onJoin(communityId) {
+    try {
+      const { data } = await joinCommunity({
+        variables: { communityId: communityId },
+      });
+    } catch (e) {
+      console.error(e);
+      console.log(error);
+    }
+  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -23,7 +42,7 @@ export default function Dashboard() {
       </h2>
 
       <div className="mt-4 flex flex-row justify-evenly">
-        <CommunityList communities={communities} sort={setSort} />
+        <CommunityList communities={communities} sort={setSort} join={onJoin} />
       </div>
     </div>
   );
