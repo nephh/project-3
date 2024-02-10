@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
-import JoinButton from "./JoinButton";
-import Auth from "../utils/auth";
+import CommunityComponent from "./CommunityComponent";
 
-export default function CommunityList({ communities, sort, join }) {
+export default function CommunityList({
+  communities,
+  sort,
+  join,
+}) {
   return (
     <>
       <div className="flex w-10/12 flex-col">
@@ -25,49 +27,12 @@ export default function CommunityList({ communities, sort, join }) {
           </button>
         </div>
         {communities.map((community, index) => (
-          <div
+          <CommunityComponent
             key={index}
-            className="mb-4 w-full rounded-lg bg-zinc-900 px-10 py-6 shadow-md"
-          >
-            {/* <div className="flex items-center justify-between">
-              <span className="font-light text-zinc-400">
-                {community.name}
-              </span>
-            </div> */}
-            <div className="mt-2">
-              <div className="flex items-center justify-between">
-                <Link
-                  to={`/community/${community.url}`}
-                  className="text-2xl font-bold text-zinc-200 hover:underline"
-                >
-                  {community.name}
-                </Link>
-
-                {Auth.loggedIn() && (
-                  <JoinButton
-                    join={join}
-                    communityId={community._id}
-                    user={Auth.getUserInfo().data.username}
-                    users={community.users}
-                  />
-                )}
-              </div>
-              <p className="mt-2 overflow-hidden text-ellipsis text-zinc-300">
-                {community.description}
-              </p>
-            </div>
-            <div className="mt-4 flex items-center justify-between">
-              <p className="text-zinc-400">
-                Users:{" "}
-                <span className="font-semibold">{community.userCount}</span>
-              </p>
-              <div>
-                <h1 className="font-bold text-zinc-400 hover:underline">
-                  Creator: {community.creator}
-                </h1>
-              </div>
-            </div>
-          </div>
+            community={community}
+            index={index}
+            join={join}
+          />
         ))}
       </div>
     </>
