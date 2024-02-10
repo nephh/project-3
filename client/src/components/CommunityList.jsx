@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function CommunityList({ communities, sort }) {
+export default function CommunityList({ communities, sort, join }) {
   return (
     <>
       <div className="flex w-10/12 flex-col">
@@ -8,12 +8,6 @@ export default function CommunityList({ communities, sort }) {
           Find your new favorite community and start an Endeavor!
         </h1>
         <div>
-          {/* <button
-        onClick={handleSortByRecent}
-        className="rounded-md bg-blue-500 px-4 py-2 text-white"
-      >
-        Sort by Recent
-      </button> */}
           <button
             onClick={() => sort("popular")}
             className="px-4 py-2 text-sm text-zinc-300"
@@ -39,12 +33,22 @@ export default function CommunityList({ communities, sort }) {
               </span>
             </div> */}
             <div className="mt-2">
-              <Link
-                to={`/community/${community.url}`}
-                className="text-2xl font-bold text-zinc-200 hover:underline"
-              >
-                {community.name}
-              </Link>
+              <div className="flex items-center justify-between">
+                <Link
+                  to={`/community/${community.url}`}
+                  className="text-2xl font-bold text-zinc-200 hover:underline"
+                >
+                  {community.name}
+                </Link>
+
+                <button
+                  onClick={() => join(community._id)}
+                  className="mt-1 px-4 py-2 text-xs font-semibold text-zinc-300 text-opacity-50"
+                  value={community._id}
+                >
+                  Join Community
+                </button>
+              </div>
               <p className="mt-2 overflow-hidden text-ellipsis text-zinc-300">
                 {community.description}
               </p>
