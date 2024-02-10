@@ -130,19 +130,18 @@ const resolvers = {
       ("You need to be logged in!");
     },
     joinCommunity: async (parent, { communityId }, context) => {
-      console.log(context.user._id);
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { communities: communityId } },
         );
 
-        await Community.findOneAndUpdate(
+        const updatedCommunity = await Community.findOneAndUpdate(
           { _id: communityId },
           { $addToSet: { users: context.user._id } },
-        );
+        ).populate("users");
 
-        return updatedUser;
+        return updatedCommunity;
       }
       throw AuthenticationError;
       ("You need to be logged in!");

@@ -10,6 +10,9 @@ export const QUERY_COMMUNITIES = gql`
       url
       userCount
       endeavorCount
+      users {
+        username
+      }
     }
   }
 `;

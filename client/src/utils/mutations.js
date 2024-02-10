@@ -52,10 +52,12 @@ export const ADD_COMMUNITY = gql`
 `;
 
 export const JOIN_COMMUNITY = gql`
-  mutation joinCommunity($communityId: ID!) {
+  mutation Mutation($communityId: ID!) {
     joinCommunity(communityId: $communityId) {
-      _id
-      username
+      name
+      users {
+        username
+      }
     }
   }
 `;
