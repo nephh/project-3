@@ -26,7 +26,11 @@ export const ADD_USER = gql`
 
 //Test add endeavor
 export const ADD_ENDEAVOR = gql`
-  mutation addEndeavor($title: String!, $content: String!, $community: String!) {
+  mutation addEndeavor(
+    $title: String!
+    $content: String!
+    $community: String!
+  ) {
     addEndeavor(title: $title, content: $content, community: $community) {
       _id
       title
@@ -43,6 +47,18 @@ export const ADD_COMMUNITY = gql`
       _id
       name
       description
+      url
+    }
+  }
+`;
+
+export const JOIN_COMMUNITY = gql`
+  mutation Mutation($communityId: ID!) {
+    joinCommunity(communityId: $communityId) {
+      name
+      users {
+        username
+      }
     }
   }
 `;

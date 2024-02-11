@@ -13,7 +13,6 @@ function NavTabs() {
   const toggleNavbar = () => setIsOpen(!isOpen);
 
   return (
-    // TEST Navbar
     <>
     <nav className="border-gray-200 bg-white dark:bg-gray-900">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
@@ -104,7 +103,7 @@ function NavTabs() {
                 Create
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 className={`${currentPage === "browse" ? "text-cyan-600" : "text-zinc-300"} 
                 block rounded px-3 py-2  hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-cyan-700`}
@@ -112,7 +111,7 @@ function NavTabs() {
               >
                 Browse
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
@@ -139,12 +138,12 @@ function NavTabs() {
         >
           Create
         </Link>
-        <Link
+        {/* <Link
           to="/browse"
           className="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
         >
           Browse
-        </Link>
+        </Link> */}
       </div>
     )}
     </>

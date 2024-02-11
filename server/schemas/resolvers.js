@@ -98,6 +98,7 @@ const resolvers = {
           name,
           description,
           creator: context.user.username,
+          users: [context.user._id],
         });
 
         await User.findOneAndUpdate(
@@ -125,6 +126,23 @@ const resolvers = {
         );
 
         return endeavor;
+      }
+      throw AuthenticationError;
+      ("You need to be logged in!");
+    },
+    joinCommunity: async (parent, { communityId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { communities: communityId } },
+        );
+
+        const updatedCommunity = await Community.findOneAndUpdate(
+          { _id: communityId },
+          { $addToSet: { users: context.user._id }, $inc: { userCount: 1 } },
+        ).populate("users");
+
+        return updatedCommunity;
       }
       throw AuthenticationError;
       ("You need to be logged in!");
