@@ -10,7 +10,7 @@
     "name": "Music Lovers",
     "description": "A place for music enthusiasts to share and discuss their favorite tunes.",
     "creator": "eva",
-    "users": ["eva", "dusty", "jared", "frodo", "Owen"],
+    "users": ["eva", "jared", "frodo", "Owen"],
     "endeavors": []
   },
   {
@@ -31,7 +31,7 @@
     "name": "Smash Bros Fans",
     "description": "A community for fans of the Super Smash Bros. video game series.",
     "creator": "Owen",
-    "users": ["eva", "dusty", "jared", "Owen"],
+    "users": ["eva", "jared", "Owen"],
     "endeavors": []
   },
   {
@@ -45,21 +45,21 @@
     "name": "Photography",
     "description": "Share your photos, get feedback, and discuss photography techniques.",
     "creator": "Owen",
-    "users": ["eva", "dusty", "jared", "Owen"],
+    "users": ["eva", "dusty", "Owen"],
     "endeavors": []
   },
   {
     "name": "Outdoor Adventures",
     "description": "A community for outdoor enthusiasts to share their adventures and tips.",
     "creator": "dusty",
-    "users": ["eva", "dusty", "jared", "frodo"],
+    "users": ["eva", "jared", "frodo"],
     "endeavors": []
   },
   {
     "name": "Book Club",
     "description": "Discuss your favorite books and discover new ones.",
     "creator": "eva",
-    "users": ["eva", "dusty", "jared"],
+    "users": ["eva", "dusty", "Owen"],
     "endeavors": []
   },
   {

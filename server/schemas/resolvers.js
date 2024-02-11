@@ -138,7 +138,7 @@ const resolvers = {
 
         const updatedCommunity = await Community.findOneAndUpdate(
           { _id: communityId },
-          { $addToSet: { users: context.user._id } },
+          { $addToSet: { users: context.user._id }, $inc: { userCount: 1 } },
         ).populate("users");
 
         return updatedCommunity;
