@@ -5,3 +5,9 @@
 .onPage {
   color: blue;
 }
+
+.social-links {
+  display: inline-block;
+  font-size: 40px;
+  list-style: none;
+}
