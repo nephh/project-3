@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { QUERY_SINGLE_COMMUNITY } from "../utils/queries";
 export default function Community() {
   const { communityUrl } = useParams();
-  console.log(communityUrl);
   const { loading, data } = useQuery(QUERY_SINGLE_COMMUNITY, {
     variables: { communityUrl: communityUrl },
   });
