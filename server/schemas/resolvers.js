@@ -98,6 +98,7 @@ const resolvers = {
           name,
           description,
           creator: context.user.username,
+          users: [context.user._id],
         });
 
         await User.findOneAndUpdate(

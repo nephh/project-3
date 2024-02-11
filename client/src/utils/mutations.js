@@ -47,6 +47,7 @@ export const ADD_COMMUNITY = gql`
       _id
       name
       description
+      url
     }
   }
 `;

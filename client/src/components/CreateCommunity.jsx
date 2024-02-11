@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMUNITY } from "../utils/mutations";
-import { QUERY_SINGLE_USER } from "../utils/queries";
+import {
+  QUERY_SINGLE_USER,
+  DASHBOARD_QUERY,
+  QUERY_COMMUNITIES,
+} from "../utils/queries";
 import Auth from "../utils/auth";
 
 const CreateCommunity = () => {
@@ -13,6 +17,11 @@ const CreateCommunity = () => {
   const [addCommunity] = useMutation(ADD_COMMUNITY, {
     refetchQueries: [
       { query: QUERY_SINGLE_USER, variables: { username: user.data.username } },
+      {
+        query: DASHBOARD_QUERY,
+        variables: { username: user.data.username, sort: "" },
+      },
+      { query: QUERY_COMMUNITIES, variables: { sort: "" } },
     ],
   });
 
@@ -40,7 +49,7 @@ const CreateCommunity = () => {
         description: "",
       });
       //TEST take to created community page, ISSUE showing undefined for url
-      //window.location.replace(`/community/${data.addCommunity.url}`);
+      window.location.replace(`/community/${data.addCommunity.url}`);
     } catch (err) {
       console.error(err);
     }
