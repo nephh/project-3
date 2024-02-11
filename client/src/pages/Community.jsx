@@ -4,11 +4,12 @@ import { QUERY_SINGLE_COMMUNITY } from "../utils/queries";
 export default function Community() {
   const { communityUrl } = useParams();
   const { loading, data } = useQuery(QUERY_SINGLE_COMMUNITY, {
-    variables: { communityUrl: communityUrl },
+    variables: { url: communityUrl },
   });
 
   console.log(data);
-  const communities = data?.community || [];
+  const community = data?.community || [];
+  console.log(community.name);
   return (
     <div className="overflow-x-hidden bg-gray-100">
       <div className="px-6 py-8">
@@ -16,7 +17,7 @@ export default function Community() {
           <div className="w-full lg:w-8/12">
             <div className="flex items-center justify-between">
               <h1 className="text-xl font-bold text-gray-700 md:text-2xl">
-                Main Community Page
+                {community.name}
               </h1>
               <div>
                 <select className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">

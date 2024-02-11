@@ -23,6 +23,7 @@ export default function Endeavor() {
   console.log(data);
 
   const endeavor = data?.endeavor || [];
+  console.log(endeavor.title);
   return (
     <div className="container mx-auto flex justify-between overflow-x-hidden bg-gray-100">
       {/* name of endeavor and description */}
@@ -30,7 +31,7 @@ export default function Endeavor() {
         <div className="w-full lg:w-8/12">
           <div className="mt-4">
             <div className="mx-auto flex items-center justify-between">
-              <h1 className="ml-4 text-3xl font-bold">Endeavor</h1>
+              <h1 className="ml-4 text-3xl font-bold">{endeavor.title}</h1>
               <h2 className="mr-10 text-xl font-medium text-green-500">
                 ACTIVE
               </h2>
