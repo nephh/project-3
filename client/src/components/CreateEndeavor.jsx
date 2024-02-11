@@ -53,6 +53,8 @@ export default function CreateEndeavor() {
         title: "",
         content: "",
       });
+      //Test take to endeavor page, seems to work but without named url
+      //window.location.replace(`/community/${formState.community}/${data.addEndeavor._id}`);
     } catch (err) {
       console.error(err);
     }

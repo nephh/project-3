@@ -8,6 +8,7 @@ import Slider from "../components/Slider";
 //TEST query
 import { useQuery } from "@apollo/client";
 import { QUERY_ENDEAVORS } from "../utils/queries";
+import SplashImage from "../assets/unsplash3.jpg";
 
 export default function Login() {
   const [formState, setFormState] = useState({
@@ -54,11 +55,14 @@ export default function Login() {
 
 
   return (
-    <div className="flex min-h-screen items-center bg-white dark:bg-gray-900">
+    <div className="flex min-h-screen items-center bg-white dark:bg-gray-900"
+    style={{backgroundImage: `url(${SplashImage})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center",
+    backgroundAttachment:"fixed"}}
+      >
       <div className="container mx-auto">
-        <div className="mx-auto my-3 max-w-md">
+        <div className="mx-auto my-3 max-w-md bg-black bg-opacity-75 rounded-xl py-3">
           <div className="text-center">
-            <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">
+            <h1 className="my-3 text-4xl font-semibold text-gray-700 dark:text-gray-200">
               Sign in
             </h1>
             <p className="text-gray-500 dark:text-gray-400">
