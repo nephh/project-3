@@ -9,6 +9,7 @@ import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 import Nav from "./components/NavTabs.jsx";
 import SplashImage from "./assets/blur.png";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   const httpLink = createHttpLink({
@@ -48,6 +49,7 @@ function App() {
           <Outlet />
         </div>
       </div>
+      <Footer />
     </ApolloProvider>
   );
 }

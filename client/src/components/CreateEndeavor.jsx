@@ -61,12 +61,12 @@ export default function CreateEndeavor() {
   };
 
   return (
-    <div className="py-8 ">
+    <div className="p-10">
       <form
         className="mx-auto max-w-md rounded bg-[conic-gradient(at_right,_var(--tw-gradient-stops))] from-indigo-200 via-slate-600 to-indigo-200 px-8 pb-8 pt-6 shadow-md"
         onSubmit={handleSubmit}
       >
-        <h1 className="border-b-2 border-neutral-100 pb-5 text-center text-2xl font-extrabold text-orange-700 drop-shadow-lg">
+        <h1 className="border-b-2 border-neutral-100 pb-5 text-center text-2xl font-extrabold text-white drop-shadow-lg">
           Create New Endeavor!
         </h1>
         <div className="mb-5">
