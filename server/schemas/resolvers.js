@@ -41,7 +41,6 @@ const resolvers = {
         .sort(sort);
     },
     community: async (parent, { url }) => {
-      console.log(url);
       return Community.findOne({ url }).populate("endeavors").populate("users");
     },
     endeavors: async (parent, { communityUrl, sort }) => {
