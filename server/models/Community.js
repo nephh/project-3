@@ -20,6 +20,9 @@ const communitySchema = new Schema({
   userCount: {
     type: Number,
   },
+  url: {
+    type: String
+  },
   // userLimit: {
   //   type: Number,
   // },
@@ -45,8 +48,12 @@ communitySchema.pre("save", async function (next) {
   next();
 });
 
-communitySchema.virtual("url").get(function () {
-  return this.name.toLowerCase().split(" ").join("-");
+communitySchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("users")) {
+    this.url = this.name.toLowerCase().split(" ").join("-");
+  }
+
+  next();
 });
 
 communitySchema.virtual("endeavorCount").get(function () {
