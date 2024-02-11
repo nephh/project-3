@@ -18,7 +18,7 @@ export default function Communities() {
   const [joinCommunity, { error }] = useMutation(JOIN_COMMUNITY, {
     refetchQueries: [
       { query: DASHBOARD_QUERY, variables: { username: user, sort } },
-      { query: QUERY_COMMUNITIES },
+      { query: QUERY_COMMUNITIES, variables: { sort: sort } },
     ],
   });
 
