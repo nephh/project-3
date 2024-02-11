@@ -8,6 +8,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 import Nav from "./components/NavTabs.jsx";
+import SplashImage from "./assets/blur.png";
 
 function App() {
   const httpLink = createHttpLink({
@@ -34,7 +35,18 @@ function App() {
     <ApolloProvider client={client}>
       <div className="h-full bg-zinc-800 text-zinc-300">
         <Nav />
-        <Outlet />
+        <div
+          className="min-h-screen "
+          style={{
+            backgroundImage: `url(${SplashImage})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundAttachment: "fixed",
+          }}
+        >
+          <Outlet />
+        </div>
       </div>
     </ApolloProvider>
   );

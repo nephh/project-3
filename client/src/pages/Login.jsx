@@ -8,7 +8,7 @@ import Slider from "../components/Slider";
 //TEST query
 import { useQuery } from "@apollo/client";
 import { QUERY_ENDEAVORS } from "../utils/queries";
-import SplashImage from "../assets/unsplash3.jpg";
+import SplashImage from "../assets/blur.png";
 
 export default function Login() {
   const [formState, setFormState] = useState({
