@@ -8,6 +8,7 @@ export default function Community() {
   });
 
   console.log(data);
+  const communities = data?.community || [];
   return (
     <div className="overflow-x-hidden bg-gray-100">
       <div className="px-6 py-8">

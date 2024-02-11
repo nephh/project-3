@@ -22,6 +22,7 @@ export default function Endeavor() {
   });
   console.log(data);
 
+  const endeavor = data?.endeavor || [];
   return (
     <div className="container mx-auto flex justify-between overflow-x-hidden bg-gray-100">
       {/* name of endeavor and description */}
