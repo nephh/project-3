@@ -4,6 +4,7 @@
     "content": "Looking for a group to play some Monster Hunter World with. I'm HR 50 and I'm looking to farm some tempered elder dragons. I'm available all day today and tomorrow.",
     "author": "Owen",
     "community": "Monster Hunter",
+    "image": "unsplash1.jpg",  
     "users": ["frodo", "dusty", "jared", "Owen"],
     "comments": []
   },
@@ -12,6 +13,7 @@
     "content": "Led Zeppelin's influence on modern music is remarkable. Who else thinks they're one of the greatest bands of all time?",
     "author": "eva",
     "community": "Music Lovers",
+    "image": "unsplash4.jpg",  
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
@@ -20,6 +22,7 @@
     "content": "What is the best field of view for a camera? I'm new to photography and I'm trying to learn as much as I can. I'm currently using a Canon EOS 5D Mark IV with a 24-70mm lens. Any advice would be appreciated. Thanks!",
     "author": "eva",
     "community": "Photography",
+    "image": "unsplashCamera.jpg", 
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
@@ -28,6 +31,7 @@
     "content": "What's your all-time favorite book? I'm looking for some new recommendations to add to my reading list.",
     "author": "frodo",
     "community": "Book Club",
+    "image": "unsplashBook.jpg", 
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
@@ -36,6 +40,7 @@
     "content": "Who's up for a Smash Bros tournament? Let's settle who's the best player in our community!",
     "author": "jared",
     "community": "Smash Bros Fans",
+    "image": "unsplashGaming.jpg", 
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
@@ -44,6 +49,7 @@
     "content": "I've been playing Monster Hunter World for a while now and I've picked up some useful tips. Who's interested in learning some strategies?",
     "author": "dusty",
     "community": "Monster Hunter",
+    "image": "unsplashGaming2.jpg", 
     "users": ["frodo", "dusty", "jared", "Owen"],
     "comments": []
   },
@@ -52,6 +58,7 @@
     "content": "Let's talk classic rock! Share your favorite bands and albums from the golden age of rock music.",
     "author": "eva",
     "community": "Music Lovers",
+    "image": "unsplashMusic2.jpg", 
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
@@ -60,6 +67,7 @@
     "content": "New to photography and feeling overwhelmed? Ask any beginner questions here! We're all here to help each other improve.",
     "author": "jared",
     "community": "Photography",
+    "image": "unsplashCamera.jpg", 
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
@@ -68,6 +76,7 @@
     "content": "Looking for your next great read? Share your favorite books and get personalized recommendations from fellow bookworms!",
     "author": "frodo",
     "community": "Book Club",
+    "image": "unsplashBook.jpg",
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
@@ -76,6 +85,7 @@
     "content": "Let's discuss the current Smash Bros character tier list. Who's overpowered and who needs a buff?",
     "author": "jared",
     "community": "Smash Bros Fans",
+    "image": "unsplashGaming.jpg",
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
@@ -84,6 +94,7 @@
     "content": "Who's up for a day of exploring Columbus? Let's discover some hidden gems in our city together!",
     "author": "Owen",
     "community": "Columbus Explorers",
+    "image": "unsplashCity.jpg",
     "users": ["frodo", "dusty", "jared", "Owen"],
     "comments": []
   },
@@ -92,6 +103,7 @@
     "content": "Calling all guitar enthusiasts! Let's share our favorite techniques and tips for mastering the guitar.",
     "author": "eva",
     "community": "Music Lovers",
+    "image": "unsplash4.jpg",
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
@@ -100,6 +112,7 @@
     "content": "Stuck on a coding problem? Post your questions here and let's help each other solve them!",
     "author": "jared",
     "community": "Programming Help",
+    "image": "unsplashCoding.jpg",
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
@@ -108,6 +121,7 @@
     "content": "Calling all sci-fi fans! Let's discuss our favorite science fiction novels and share recommendations.",
     "author": "frodo",
     "community": "Book Club",
+    "image": "unsplashBook.jpg",
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
@@ -116,6 +130,7 @@
     "content": "Looking to improve your Super Smash Bros skills? Share your best tactics and strategies here!",
     "author": "jared",
     "community": "Smash Bros Fans",
+    "image": "unsplashGaming2.jpg",
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   }

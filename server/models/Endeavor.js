@@ -23,6 +23,9 @@ const endeavorSchema = new Schema({
     required: true,
     trim: true,
   },
+  image: {
+    type: String
+  },
   userCount: {
     type: Number,
   },

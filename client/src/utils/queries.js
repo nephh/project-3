@@ -23,6 +23,7 @@ export const QUERY_ENDEAVORS = gql`
       _id
       title
       community
+      image
       content
       commentCount
       author
@@ -38,6 +39,7 @@ export const DASHBOARD_QUERY = gql`
       _id
       title
       community
+      image
       content
       commentCount
       author
@@ -62,6 +64,7 @@ export const QUERY_SINGLE_ENDEAVOR = gql`
       content
       author
       community
+      image
       communityUrl
       userCount
       comments {
@@ -89,6 +92,7 @@ export const QUERY_SINGLE_COMMUNITY = gql`
         content
         author
         community
+        image
         userCount
         communityUrl
         comments {
