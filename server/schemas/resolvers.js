@@ -10,7 +10,7 @@ const resolvers = {
     user: async (parent, { username, sort }) => {
       switch (sort) {
         case "popular":
-          sort = { userCount: 1 };
+          sort = { userCount: -1 };
           break;
         case "name":
           sort = { name: 1 };
@@ -20,7 +20,7 @@ const resolvers = {
       }
       return User.findOne({ username }).populate({
         path: "communities",
-        options: sort,
+        options: { sort: sort },
       });
     },
     communities: async (parent, { url, sort }) => {
@@ -52,6 +52,8 @@ const resolvers = {
         case "title":
           sort = { title: 1 };
           break;
+        case "newest":
+          sort = { createdAt: -1 };
         default:
           sort = null;
       }
@@ -111,7 +113,11 @@ const resolvers = {
       throw AuthenticationError;
       ("You need to be logged in!");
     },
-    addEndeavor: async (parent, { title, content, community, image }, context) => {
+    addEndeavor: async (
+      parent,
+      { title, content, community, image },
+      context,
+    ) => {
       if (context.user) {
         const endeavor = await Endeavor.create({
           title,

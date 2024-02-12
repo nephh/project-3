@@ -45,6 +45,7 @@ export const DASHBOARD_QUERY = gql`
       author
       userCount
       communityUrl
+      createdAt
     }
     user(username: $username, sort: $sort) {
       username
