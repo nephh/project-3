@@ -30,12 +30,14 @@ export const ADD_ENDEAVOR = gql`
     $title: String!
     $content: String!
     $community: String!
+    $image: String
   ) {
-    addEndeavor(title: $title, content: $content, community: $community) {
+    addEndeavor(title: $title, content: $content, community: $community, image: $image) {
       _id
       title
       content
       community
+      image
     }
   }
 `;
