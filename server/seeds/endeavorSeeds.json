@@ -13,6 +13,7 @@
     "content": "Led Zeppelin's influence on modern music is remarkable. Who else thinks they're one of the greatest bands of all time?",
     "author": "eva",
     "community": "Music Lovers",
+    "image": "unsplash4.jpg",  
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
@@ -21,6 +22,7 @@
     "content": "What is the best field of view for a camera? I'm new to photography and I'm trying to learn as much as I can. I'm currently using a Canon EOS 5D Mark IV with a 24-70mm lens. Any advice would be appreciated. Thanks!",
     "author": "eva",
     "community": "Photography",
+    "image": "unsplashCamera.jpg", 
     "users": ["eva", "dusty", "jared", "frodo", "Owen"],
     "comments": []
   },
