@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { QUERY_SINGLE_COMMUNITY } from "../utils/queries";
 import EndeavorComponent from "../components/EndeavorComponent";
@@ -14,6 +15,15 @@ export default function Community() {
   const users = community?.users || [];
   console.log(community.name);
   console.log(endeavors)
+
+  const [ url, setUrl ] = useState("");
+
+  useEffect(() => {
+    if(community) {
+      setUrl(community.url)
+    }
+  }, [])
+
   return (
     <div className="overflow-x-hidden">
       <div className="px-6 py-8">
