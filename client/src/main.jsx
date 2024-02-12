@@ -21,18 +21,18 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Login />,
       },
       {
         path: "home",
-        element: <Home />,
+        element: <Dashboard />,
       },
       {
         path: "community/:communityUrl",
         element: <Community />,
       },
       {
-        path: "endeavor",
+        path: "community/:communityUrl/:endeavorId",
         element: <Endeavor />,
       },
       {

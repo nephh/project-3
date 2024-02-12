@@ -23,8 +23,8 @@ const resolvers = {
         options: sort,
       });
     },
-    communities: async (parent, { name, sort }) => {
-      const params = name ? { name } : {};
+    communities: async (parent, { url, sort }) => {
+      const params = url ? { url } : {};
       switch (sort) {
         case "popular":
           sort = { userCount: -1 };
@@ -40,14 +40,11 @@ const resolvers = {
         .populate("users")
         .sort(sort);
     },
-    community: async (parent, { communityId }) => {
-      return Community.findOne({ _id: communityId }).populate("endeavors");
-    },
-    communityByUrl: async (parent, { url }) => {
+    community: async (parent, { url }) => {
       return Community.findOne({ url }).populate("endeavors").populate("users");
     },
-    endeavors: async (parent, { communityId, sort }) => {
-      const params = communityId ? { communityId } : {};
+    endeavors: async (parent, { communityUrl, sort }) => {
+      const params = communityUrl ? { communityUrl } : {};
       switch (sort) {
         case "popular":
           sort = { userCount: -1 };
@@ -101,6 +98,7 @@ const resolvers = {
           name,
           description,
           creator: context.user.username,
+          users: [context.user._id],
         });
 
         await User.findOneAndUpdate(
@@ -128,6 +126,23 @@ const resolvers = {
         );
 
         return endeavor;
+      }
+      throw AuthenticationError;
+      ("You need to be logged in!");
+    },
+    joinCommunity: async (parent, { communityId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { communities: communityId } },
+        );
+
+        const updatedCommunity = await Community.findOneAndUpdate(
+          { _id: communityId },
+          { $addToSet: { users: context.user._id }, $inc: { userCount: 1 } },
+        ).populate("users");
+
+        return updatedCommunity;
       }
       throw AuthenticationError;
       ("You need to be logged in!");

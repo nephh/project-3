@@ -46,11 +46,9 @@ const typeDefs = `
   type Query {
     users: [User]
     user(username: String!, sort: String): User
-    communities(username: String, sort: String): [Community]
-    community(communityId: ID!): Community
-    communityByUrl(url: String!): Community
-    endeavors(communityId: ID): [Endeavor]
-    endeavors(communityId: ID, sort: String): [Endeavor]
+    communities(url: String, sort: String): [Community]
+    community(url: String!): Community
+    endeavors(communityUrl: String, sort: String): [Endeavor]
     endeavor(endeavorId: ID!): Endeavor
   }
 
@@ -59,6 +57,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addCommunity(name: String!, description: String): Community
     addEndeavor(title: String!, content: String, community: String!): Endeavor
+    joinCommunity(communityId: ID!): Community
   }
 `;
 

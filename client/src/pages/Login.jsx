@@ -8,6 +8,7 @@ import Slider from "../components/Slider";
 //TEST query
 import { useQuery } from "@apollo/client";
 import { QUERY_ENDEAVORS } from "../utils/queries";
+import SplashImage from "../assets/blur.png";
 
 export default function Login() {
   const [formState, setFormState] = useState({
@@ -52,21 +53,32 @@ export default function Login() {
   }
   //console.log(endeavors);
 
-
   return (
-    <div className="flex min-h-screen items-center bg-white dark:bg-gray-900">
-      <div className="container mx-auto">
-        <div className="mx-auto my-3 max-w-md">
+    <div
+      className="flex min-h-screen bg-white dark:bg-gray-900"
+      style={{
+        backgroundImage: `url(${SplashImage})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className="container mx-auto mt-20">
+        <div className="w-11/12 md:min-w-2xl mx-auto max-w-2xl rounded-xl bg-black bg-opacity-75 py-1">
           <div className="text-center">
-            <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">
+            <h1 className="my-3 text-4xl font-semibold text-gray-700 dark:text-gray-200">
               Sign in
             </h1>
             <p className="text-gray-500 dark:text-gray-400">
               Sign in to access your account
             </p>
           </div>
-          <div className="m-7">
-            <form onSubmit={handleFormSubmit}>
+          <div className="mx-7 mt-7">
+            <form
+              className="flex flex-col md:flex-row md:items-center justify-between"
+              onSubmit={handleFormSubmit}
+            >
               <div className="mb-6">
                 <label
                   htmlFor="email"
@@ -81,6 +93,7 @@ export default function Login() {
                   placeholder="you@company.com"
                   className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:focus:border-gray-500 dark:focus:ring-gray-900"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mb-6">
@@ -99,9 +112,10 @@ export default function Login() {
                   placeholder="Your Password"
                   className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:focus:border-gray-500 dark:focus:ring-gray-900"
                   onChange={handleChange}
+                  required
                 />
               </div>
-              <div className="mb-6 flex justify-center">
+              <div className="mb-3 flex justify-center">
                 <button
                   type="submit"
                   className="mt-4 w-36 rounded-md bg-indigo-500 p-3 text-white focus:bg-indigo-600 focus:outline-none"
@@ -109,20 +123,22 @@ export default function Login() {
                   Sign in
                 </button>
               </div>
-              <p className="text-center text-sm text-gray-400">
-                Don't have an account yet?{" "}
-                <Link
-                  to="/signup"
-                  className="text-indigo-400 focus:text-indigo-500 focus:underline focus:outline-none dark:focus:border-indigo-800"
-                >
-                  Sign up
-                </Link>
-                .
-              </p>
             </form>
           </div>
+          <p className="mb-4 text-center text-sm text-gray-400">
+            Don't have an account yet?{" "}
+            <Link
+              to="/signup"
+              className="text-indigo-400 focus:text-indigo-500 focus:underline focus:outline-none dark:focus:border-indigo-800"
+            >
+              Sign up
+            </Link>
+            .
+          </p>
         </div>
-        <Slider endeavors={endeavors}/>
+        <div className="mt-20 text-center">
+          <Slider endeavors={endeavors} />
+        </div>
       </div>
     </div>
   );

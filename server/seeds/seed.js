@@ -1,7 +1,7 @@
 const db = require("../config/connection");
 const { User, Community, Endeavor } = require("../models");
 const userSeeds = require("./userSeeds.json");
-const collectionSeeds = require("./communitySeeds.json");
+const communitySeeds = require("./communitySeeds.json");
 const endeavorSeeds = require("./endeavorSeeds.json");
 const cleanDB = require("./cleanDB");
 
@@ -13,8 +13,8 @@ db.once("open", async () => {
 
     await User.create(userSeeds);
 
-    for (let i = 0; i < collectionSeeds.length; i++) {
-      let { users } = collectionSeeds[i];
+    for (let i = 0; i < communitySeeds.length; i++) {
+      let { users } = communitySeeds[i];
       let newUsers = [];
       for (const user of users) {
         const communityUser = await User.findOne({ username: user });
@@ -22,9 +22,9 @@ db.once("open", async () => {
         newUsers.push(userId);
       }
 
-      collectionSeeds[i].users = newUsers;
+      communitySeeds[i].users = newUsers;
 
-      const { _id, creator } = await Community.create(collectionSeeds[i]);
+      const { _id, creator } = await Community.create(communitySeeds[i]);
       await User.findOneAndUpdate(
         { username: creator },
         {
@@ -33,6 +33,17 @@ db.once("open", async () => {
           },
         },
       );
+
+      for (const user of users) {
+        await User.findOneAndUpdate(
+          { username: user },
+          {
+            $addToSet: {
+              communities: _id,
+            },
+          },
+        );
+      }
     }
 
     for (let i = 0; i < endeavorSeeds.length; i++) {

@@ -26,6 +26,9 @@ const endeavorSchema = new Schema({
   userCount: {
     type: Number,
   },
+  communityUrl: {
+    type: String,
+  },
   users: [
     {
       type: Schema.Types.ObjectId,
@@ -63,8 +66,12 @@ endeavorSchema.pre("save", async function (next) {
   next();
 });
 
-endeavorSchema.virtual("communityUrl").get(function () {
-  return this.community.toLowerCase().split(" ").join("-");
+endeavorSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("users")) {
+    this.communityUrl = this.community.toLowerCase().split(" ").join("-");
+  }
+
+  next();
 });
 
 endeavorSchema.virtual("commentCount").get(function () {

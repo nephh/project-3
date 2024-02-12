@@ -20,6 +20,9 @@ const communitySchema = new Schema({
   userCount: {
     type: Number,
   },
+  url: {
+    type: String
+  },
   // userLimit: {
   //   type: Number,
   // },
@@ -37,14 +40,6 @@ const communitySchema = new Schema({
   ],
 });
 
-// communitySchema.pre("save", async function (next) {
-//   if (this.isNew || this.isModified("name")) {
-//     const url = this.name.toLowerCase().split(" ").join("-");
-//     this.url = url;
-//   }
-
-//   next();
-// });
 communitySchema.pre("save", async function (next) {
   if (this.isNew || this.isModified("users")) {
     this.userCount = this.users.length;
@@ -53,8 +48,12 @@ communitySchema.pre("save", async function (next) {
   next();
 });
 
-communitySchema.virtual("url").get(function () {
-  return this.name.toLowerCase().split(" ").join("-");
+communitySchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("users")) {
+    this.url = this.name.toLowerCase().split(" ").join("-");
+  }
+
+  next();
 });
 
 communitySchema.virtual("endeavorCount").get(function () {

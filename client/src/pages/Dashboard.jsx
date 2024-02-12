@@ -28,7 +28,7 @@ export default function Dashboard() {
         Welcome {user.username}!
       </h2>
 
-      <div className="mt-4 flex flex-row justify-evenly">
+      <div className="mt-4 flex md:flex-row md:justify-evenly flex-col">
         <DashboardList endeavors={endeavors} sort={setSort} />
         <DashboardCommunities communities={communities} />
       </div>

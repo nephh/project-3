@@ -23,3 +23,42 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+//Test add endeavor
+export const ADD_ENDEAVOR = gql`
+  mutation addEndeavor(
+    $title: String!
+    $content: String!
+    $community: String!
+  ) {
+    addEndeavor(title: $title, content: $content, community: $community) {
+      _id
+      title
+      content
+      community
+    }
+  }
+`;
+
+//Test add community
+export const ADD_COMMUNITY = gql`
+  mutation addCommunity($name: String!, $description: String!) {
+    addCommunity(name: $name, description: $description) {
+      _id
+      name
+      description
+      url
+    }
+  }
+`;
+
+export const JOIN_COMMUNITY = gql`
+  mutation Mutation($communityId: ID!) {
+    joinCommunity(communityId: $communityId) {
+      name
+      users {
+        username
+      }
+    }
+  }
+`;
