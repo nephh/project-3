@@ -8,7 +8,7 @@ import Slider from "../components/Slider";
 //TEST query
 import { useQuery } from "@apollo/client";
 import { QUERY_ENDEAVORS } from "../utils/queries";
-import SplashImage from "../assets/unsplash3.jpg";
+import SplashImage from "../assets/blur.png";
 
 export default function Login() {
   const [formState, setFormState] = useState({
@@ -53,14 +53,19 @@ export default function Login() {
   }
   //console.log(endeavors);
 
-
   return (
-    <div className="flex min-h-screen items-center bg-white dark:bg-gray-900"
-    style={{backgroundImage: `url(${SplashImage})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center",
-    backgroundAttachment:"fixed"}}
-      >
-      <div className="container mx-auto">
-        <div className="mx-auto my-3 max-w-md bg-black bg-opacity-75 rounded-xl py-3">
+    <div
+      className="flex min-h-screen bg-white dark:bg-gray-900"
+      style={{
+        backgroundImage: `url(${SplashImage})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className="container mx-auto mt-20">
+        <div className="min-w-2xl mx-auto max-w-2xl rounded-xl bg-black bg-opacity-75 py-1">
           <div className="text-center">
             <h1 className="my-3 text-4xl font-semibold text-gray-700 dark:text-gray-200">
               Sign in
@@ -69,8 +74,11 @@ export default function Login() {
               Sign in to access your account
             </p>
           </div>
-          <div className="m-7">
-            <form onSubmit={handleFormSubmit}>
+          <div className="mx-7 mt-7">
+            <form
+              className="flex flex-row items-center justify-between"
+              onSubmit={handleFormSubmit}
+            >
               <div className="mb-6">
                 <label
                   htmlFor="email"
@@ -105,7 +113,7 @@ export default function Login() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="mb-6 flex justify-center">
+              <div className="mb-3 flex justify-center">
                 <button
                   type="submit"
                   className="mt-4 w-36 rounded-md bg-indigo-500 p-3 text-white focus:bg-indigo-600 focus:outline-none"
@@ -113,20 +121,22 @@ export default function Login() {
                   Sign in
                 </button>
               </div>
-              <p className="text-center text-sm text-gray-400">
-                Don't have an account yet?{" "}
-                <Link
-                  to="/signup"
-                  className="text-indigo-400 focus:text-indigo-500 focus:underline focus:outline-none dark:focus:border-indigo-800"
-                >
-                  Sign up
-                </Link>
-                .
-              </p>
             </form>
           </div>
+          <p className="mb-4 text-center text-sm text-gray-400">
+            Don't have an account yet?{" "}
+            <Link
+              to="/signup"
+              className="text-indigo-400 focus:text-indigo-500 focus:underline focus:outline-none dark:focus:border-indigo-800"
+            >
+              Sign up
+            </Link>
+            .
+          </p>
         </div>
-        <Slider endeavors={endeavors}/>
+        <div className="mt-20 text-center">
+          <Slider endeavors={endeavors} />
+        </div>
       </div>
     </div>
   );
