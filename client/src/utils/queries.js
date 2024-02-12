@@ -17,6 +17,28 @@ export const QUERY_COMMUNITIES = gql`
   }
 `;
 
+export const QUERY_COMMUNITY_BY_URL = gql`
+  query CommunityByUrl($url: String!) {
+    communities (url: $url){
+      name
+      description
+      creator
+      endeavorCount
+      endeavors {
+      title
+      content
+      commentCount
+      author
+      userCount
+      }
+      userCount
+      users {
+        username
+      }
+    }
+  }
+`
+
 export const QUERY_ENDEAVORS = gql`
   query Endeavors($communityUrl: String) {
     endeavors(communityUrl: $communityUrl) {
