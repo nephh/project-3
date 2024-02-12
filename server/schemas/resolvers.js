@@ -111,12 +111,13 @@ const resolvers = {
       throw AuthenticationError;
       ("You need to be logged in!");
     },
-    addEndeavor: async (parent, { title, content, community }, context) => {
+    addEndeavor: async (parent, { title, content, community, image }, context) => {
       if (context.user) {
         const endeavor = await Endeavor.create({
           title,
           content,
           community,
+          image,
           author: context.user.username,
         });
 

@@ -19,6 +19,7 @@ export default function CreateEndeavor() {
     title: "",
     content: "",
     community: "",
+    image: "",
   });
 
   useEffect(() => {
@@ -52,9 +53,11 @@ export default function CreateEndeavor() {
       setFormState({
         title: "",
         content: "",
+        image: "",
       });
       //Test take to endeavor page, seems to work but without named url
       //window.location.replace(`/community/${formState.community}/${data.addEndeavor._id}`);
+      console.log(formState.image);
     } catch (err) {
       console.error(err);
     }
@@ -122,6 +125,34 @@ export default function CreateEndeavor() {
             {communities.map((community) => {
               return <option key={community._id}>{community.name}</option>;
             })}
+          </select>
+        </div>
+        {/* TEST default image select */}
+        <div className="mb-5">
+          <label
+            htmlFor="image"
+            className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Select a Default Image
+          </label>
+          <select
+            id="image"
+            name="image"
+            value={formState.image}
+            onChange={handleChange}
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+          >
+            <option>Select Image</option>
+
+            <option value={"unsplashMusic2.jpg"}>Music</option>
+            <option value={"unsplashGaming.jpg"}>Gaming</option>
+            <option value={"unsplashGaming2.jpg"}>Gaming 2</option>
+            <option value={"unsplashEvent.jpg"}>Events</option>
+            <option value={"unsplashCamera.jpg"}>Photography</option>
+            <option value={"unsplashCity.jpg"}>City</option>
+            <option value={"unsplashCoding.jpg"}>Coding/Computer</option>
+            <option value={"unsplashTech.jpg"}>Tech</option>
+            <option value={"unsplashTravel.jpg"}>Travel</option>
           </select>
         </div>
 
