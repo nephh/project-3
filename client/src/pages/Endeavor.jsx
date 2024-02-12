@@ -25,7 +25,7 @@ export default function Endeavor() {
   const endeavor = data?.endeavor || [];
   console.log(endeavor.title);
   return (
-    <div className="container mx-auto flex justify-between overflow-x-hidden bg-gray-100">
+    <div className="container mx-auto flex justify-between overflow-x-hidden">
       {/* name of endeavor and description */}
       <div className="px-6 py-8">
         <div className="w-full lg:w-8/12">

@@ -80,7 +80,7 @@ const Slider = ({ endeavors }) => {
             <SwiperSlide key={item.title}>
                 <div className='flex flex-col gap-6 group relative shadow-lg text-white rounded-xl border-2 border-white px-6 py-3 h-[300px] w-[300px] lg:h-[300px] lg:w-[375px] overflow-hidden cursor-pointer'>
                     {/* bg image container */}
-                    <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-sky-400 to-indigo-900 bg-center'/>
+                    <div className='absolute inset-0 bg-opacity-75 bg-center bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-yellow-500 via-purple-500 to-blue-500 grayscale brightness-75'/>
                     <div className='relative flex flex-col gap-3'>
                         <p className="border-b-2 border-neutral-100 pb-1 text-center text-2xl font-bold text-white drop-shadow-lg">Endeavors</p>
                         <h1 className='text-2xl font-bold text-black'>{item.title}</h1>
