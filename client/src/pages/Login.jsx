@@ -93,6 +93,7 @@ export default function Login() {
                   placeholder="you@company.com"
                   className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:focus:border-gray-500 dark:focus:ring-gray-900"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mb-6">
@@ -111,6 +112,7 @@ export default function Login() {
                   placeholder="Your Password"
                   className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:focus:border-gray-500 dark:focus:ring-gray-900"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mb-3 flex justify-center">

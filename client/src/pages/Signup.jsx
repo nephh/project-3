@@ -38,9 +38,9 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-screen items-center bg-white dark:bg-gray-900">
+    <div className="flex min-h-screen items-center">
       <div className="container mx-auto">
-        <div className="mx-auto my-10 max-w-md">
+        <div className="mx-auto my-10 py-5 max-w-md rounded-xl bg-black bg-opacity-75">
           <div className="text-center">
             <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">
               Sign Up
@@ -65,6 +65,7 @@ export default function Login() {
                   placeholder="Your Username"
                   className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:focus:border-gray-500 dark:focus:ring-gray-900"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mb-6">
@@ -81,6 +82,7 @@ export default function Login() {
                   placeholder="you@company.com"
                   className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:focus:border-gray-500 dark:focus:ring-gray-900"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mb-6">
@@ -99,6 +101,7 @@ export default function Login() {
                   placeholder="Your Password"
                   className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:focus:border-gray-500 dark:focus:ring-gray-900"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mb-6 flex justify-center">

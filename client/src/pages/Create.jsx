@@ -10,7 +10,8 @@ import Auth from "../utils/auth";
 export default function Create() {
  
   return (
-    <div className="bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-sky-400 to-indigo-900">
+    // bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-sky-400 to-indigo-900
+    <div className="">
       {Auth.loggedIn() ? (
       <div className="min-h-screen flex flex-row flex-wrap justify-evenly content-center items-center">
       <CreateEndeavor />

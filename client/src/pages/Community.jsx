@@ -11,7 +11,7 @@ export default function Community() {
   const community = data?.community || [];
   console.log(community.name);
   return (
-    <div className="overflow-x-hidden bg-gray-100">
+    <div className="overflow-x-hidden">
       <div className="px-6 py-8">
         <div className="container mx-auto flex justify-between">
           <div className="w-full lg:w-8/12">
