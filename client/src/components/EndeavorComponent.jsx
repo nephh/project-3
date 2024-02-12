@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 
-export default function EndeavorsList(endeavors) {
+export default function EndeavorComponent({ endeavor, index }) {
   return (
     <div>  
-      {endeavors.map((endeavor, index) => (
         <div key={index} className="mt-6">
-        <div className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
-            <div className="flex items-center justify-between"><span className="font-light text-gray-600">Jun 1,
-                    2020</span>
+          <div className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
+            <div className="flex items-center justify-between"><span className="font-md text-gray-600">{endeavor.userCount} Active Users</span>
             </div>
             <div className="mt-2">
               <Link  to={`/endeavours/${endeavor.id}`}
@@ -30,7 +28,6 @@ export default function EndeavorsList(endeavors) {
             </div>
           </div>
         </div>
-      ))}
     </div>  
   )
 }
