@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function DashboardList({ endeavors, sort }) {
   return (
     <>
-      <div className="flex w-8/12 flex-col">
+      <div className="flex w-8/12 flex-col mx-auto md:mx-5">
         <h1 className="mb-4 text-xl font-bold text-zinc-200">
           Recent Endeavors
         </h1>
