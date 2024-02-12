@@ -1,10 +1,6 @@
 import CommunityComponent from "./CommunityComponent";
 
-export default function CommunityList({
-  communities,
-  sort,
-  join,
-}) {
+export default function CommunityList({ communities, sort, join }) {
   return (
     <>
       <div className="flex w-10/12 flex-col">
@@ -26,14 +22,16 @@ export default function CommunityList({
             Alphabetical Order
           </button>
         </div>
-        {communities.map((community, index) => (
-          <CommunityComponent
-            key={index}
-            community={community}
-            index={index}
-            join={join}
-          />
-        ))}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {communities.map((community, index) => (
+            <CommunityComponent
+              key={index}
+              community={community}
+              index={index}
+              join={join}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
