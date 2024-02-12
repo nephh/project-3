@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./pages/Error.jsx";
-import Home from "./pages/Home.jsx";
 import Create from "./pages/Create.jsx";
 import Community from "./pages/Community.jsx";
 import Communities from "./pages/Communities.jsx";
