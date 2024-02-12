@@ -94,7 +94,7 @@ const Slider = ({ endeavors }) => {
                     {item.title}
                   </h1>
                   {/* Scrollbar wonky, maybe hide scrollbar with css class */}
-                  <p className="text-black h-[80px] overflow-hidden hover:overflow-y-scroll">{item.content}</p>
+                  <p className="text-black h-[80px] overflow-hidden scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-slate-300 hover:overflow-y-scroll">{item.content}</p>
                   <p className="pb-1 text-white h-[50px]">{item.community}</p>
                 </div>
                 <img
