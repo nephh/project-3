@@ -86,6 +86,7 @@ const Slider = ({ endeavors }) => {
                         <h1 className='text-2xl font-bold text-black'>{item.title}</h1>
                         <p className='text-black'>{item.content}</p>
                         <p className='text-white'>{item.community}</p>
+                        <img className='h-[50px]' src={`/images/${item.image}`} alt={item.image} />
                     </div>
 
                 </div>

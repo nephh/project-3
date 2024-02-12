@@ -25,6 +25,7 @@ const typeDefs = `
     content: String
     author: String
     community: String
+    image: String
     communityUrl: String
     userCount: Int
     commentCount: Int
