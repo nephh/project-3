@@ -19,7 +19,7 @@ export default function CommunityComponent({ community, index, join }) {
   };
 
   return (
-    <div className="mb-4 w-full rounded-lg bg-zinc-900 px-10 py-6 shadow-md">
+    <div className="mb-4 w-full rounded-lg bg-zinc-900 px-10 py-6 shadow-md bg-opacity-75">
       <div className="mt-2">
         <div className="flex items-center justify-between">
           <Link
