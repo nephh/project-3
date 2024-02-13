@@ -10,6 +10,7 @@ export default function Dashboard() {
     window.location.assign("/login");
   }
   const [sort, setSort] = useState("");
+  const [mobile, setMobile] = useState(false);
   const { data: user } = Auth.getUserInfo();
   const { loading, data } = useQuery(DASHBOARD_QUERY, {
     variables: { username: user.username, sort: sort },
@@ -18,9 +19,10 @@ export default function Dashboard() {
   const endeavors = data?.endeavors || [];
   const communities = data?.user.communities || [];
 
+  console.log(mobile);
   return (
     <div className="flex flex-col items-center">
-      <h2 className="mt-6 md:text-5xl font-bold text-zinc-200">
+      <h2 className="mt-6 font-bold text-zinc-200 md:text-5xl">
         Welcome {user.username}!
       </h2>
       {loading && (
@@ -30,8 +32,18 @@ export default function Dashboard() {
       )}
       <div className="mt-4 flex flex-col md:flex-row md:justify-evenly">
         <DashboardList endeavors={endeavors} sort={setSort} />
-        <DashboardCommunities communities={communities} sort={setSort} />
+        <DashboardCommunities communities={communities} mobile={mobile} />
       </div>
+      <button
+        data-collapse-toggle="navbar-cta"
+        type="button"
+        className="fixed bottom-20 bg-gray-900 right-6 inline-flex h-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-gray-200 md:hidden"
+        aria-controls="navbar-cta"
+        aria-expanded="false"
+        onClick={() => setMobile(!mobile)}
+      >
+        <span className="font-semibold">View your communities</span>
+      </button>
     </div>
   );
 }
