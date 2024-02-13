@@ -55,7 +55,7 @@ export default function Login() {
 
   return (
     <div
-      className="flex h-screen bg-white dark:bg-gray-900"
+      className="flex min-h-screen bg-white dark:bg-gray-900"
       style={{
         backgroundImage: `url(${SplashImage})`,
         backgroundSize: "cover",
@@ -64,7 +64,7 @@ export default function Login() {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="container mx-auto mt-24">
+      <div className="container mx-auto mt-20">
         <div className="md:min-w-2xl mx-auto w-11/12 max-w-2xl rounded-xl bg-black bg-opacity-75 py-1">
           <div className="text-center">
             <h1 className="my-3 text-4xl font-semibold text-gray-700 dark:text-gray-200">
