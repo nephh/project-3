@@ -44,7 +44,7 @@ export default function Endeavor() {
             </h1>
             <button
               onClick={handleGoBack}
-              className="mb-2 text-l rounded bg-indigo-500 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
+              className="mb-2 text-l rounded bg-cyan-900 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
             >
               Back
             </button>
@@ -99,7 +99,7 @@ export default function Endeavor() {
               <div className="flex justify-center">
                 <button
                   onClick={handleGoToStripe}
-                  className="text-l mt-3 rounded bg-indigo-600 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
+                  className="text-l mt-3 rounded bg-cyan-900 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
                 >
                   Donate
                 </button>

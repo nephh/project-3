@@ -107,7 +107,7 @@ export default function Login() {
               <div className="mb-6 flex justify-center">
                 <button
                   type="submit"
-                  className="mt-4 w-36 rounded-md bg-indigo-500 p-3 text-white focus:bg-indigo-600 focus:outline-none"
+                  className="mt-4 w-36 rounded-md bg-cyan-900 p-3 text-white focus:bg-indigo-600 focus:outline-none"
                 >
                   Sign up
                 </button>
