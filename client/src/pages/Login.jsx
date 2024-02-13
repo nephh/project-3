@@ -65,7 +65,7 @@ export default function Login() {
       }}
     >
       <div className="container mx-auto mt-20">
-        <div className="w-11/12 md:min-w-2xl mx-auto max-w-2xl rounded-xl bg-black bg-opacity-75 py-1">
+        <div className="md:min-w-2xl mx-auto w-11/12 max-w-2xl transform rounded-xl bg-black bg-opacity-75 py-1 transition">
           <div className="text-center">
             <h1 className="my-3 text-4xl font-semibold text-gray-700 dark:text-gray-200">
               Sign in
@@ -73,10 +73,15 @@ export default function Login() {
             <p className="text-gray-500 dark:text-gray-400">
               Sign in to access your account
             </p>
+            {error && (
+              <div className="mt-2 flex items-center justify-center text-red-800">
+                Incorrect login
+              </div>
+            )}
           </div>
           <div className="mx-7 mt-7">
             <form
-              className="flex flex-col md:flex-row md:items-center justify-between"
+              className="flex flex-col justify-between md:flex-row md:items-center"
               onSubmit={handleFormSubmit}
             >
               <div className="mb-6">
