@@ -4,10 +4,7 @@ export default function CommunityList({ communities, sort, join }) {
   return (
     <>
       <div className="flex w-10/12 flex-col">
-        <h1 className="mb-4 text-center text-4xl font-bold text-zinc-200">
-          Find your new favorite community and start an Endeavor!
-        </h1>
-        <div>
+        <div className="mb-2">
           <button
             onClick={() => sort("popular")}
             className="px-4 py-2 text-sm text-zinc-300"
