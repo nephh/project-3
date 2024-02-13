@@ -3,28 +3,36 @@ import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 
 import { ADD_ENDEAVOR } from "../utils/mutations";
-import { DASHBOARD_QUERY, QUERY_SINGLE_USER } from "../utils/queries";
+import {
+  DASHBOARD_QUERY,
+  QUERY_SINGLE_COMMUNITY,
+  QUERY_SINGLE_USER,
+} from "../utils/queries";
 
 import Auth from "../utils/auth";
 
 export default function CreateEndeavor() {
   const user = Auth.getUserInfo();
-  const [addEndeavor, { error }] = useMutation(ADD_ENDEAVOR, {
-    refetchQueries: [
-      { query: DASHBOARD_QUERY, variables: { username: user.data.username } },
-    ],
-  });
-  const { loading, data } = useQuery(QUERY_SINGLE_USER, {
-    variables: { username: user.data.username },
-  });
-  const communities = data?.user.communities || [];
-
   const [formState, setFormState] = useState({
     title: "",
     content: "",
     community: "",
     image: "",
   });
+
+  const [addEndeavor, { error }] = useMutation(ADD_ENDEAVOR, {
+    refetchQueries: [
+      { query: DASHBOARD_QUERY, variables: { username: user.data.username } },
+      {
+        query: QUERY_SINGLE_COMMUNITY,
+        variables: { name: formState.community },
+      },
+    ],
+  });
+  const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+    variables: { username: user.data.username },
+  });
+  const communities = data?.user.communities || [];
 
   useEffect(() => {
     if (communities.length > 0) {
@@ -208,7 +216,7 @@ export default function CreateEndeavor() {
 
         <button
           type="submit"
-          className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="rounded-lg bg-cyan-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-cyan-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Create Endeavor
         </button>

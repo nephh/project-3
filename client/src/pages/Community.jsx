@@ -37,7 +37,7 @@ export default function Community() {
           <div className="w-full lg:w-8/12">
             <button
               onClick={handleGoBack}
-              className="text-l mb-2 rounded bg-blue-800 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
+              className="text-l mb-2 rounded bg-cyan-900 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
             >
               Back
             </button>
