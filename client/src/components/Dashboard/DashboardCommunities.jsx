@@ -1,11 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function DashboardCommunities({ communities }) {
+export default function DashboardCommunities({ communities, sort }) {
   return (
     <div className="mx-5">
-      <h1 className="mb-4 text-xl font-bold text-zinc-200">Your Communities</h1>
-      <div className="mx-auto flex max-w-sm flex-col rounded-lg bg-zinc-900 px-4 py-6 shadow-md">
+      <h1 className="mb-2 text-xl font-bold text-zinc-200">Your Communities</h1>
+      <div className="mb-2">
+        <button
+          onClick={() => sort("popular")}
+          className="px-4 py-2 text-sm text-zinc-300"
+        >
+          Most Popular
+        </button>
+        |
+        <button
+          onClick={() => sort("title")}
+          className="px-4 py-2 text-sm text-zinc-300"
+        >
+          Alphabetical Order
+        </button>
+      </div>
+      <div className="mx-auto flex max-w-sm flex-col rounded-lg bg-zinc-900 bg-opacity-75 px-4 py-6 shadow-md">
         <ul className="border-t border-zinc-400 border-opacity-25">
           {communities.map((community, index) => (
             <li

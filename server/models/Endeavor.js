@@ -24,13 +24,17 @@ const endeavorSchema = new Schema({
     trim: true,
   },
   image: {
-    type: String
+    type: String,
   },
   userCount: {
     type: Number,
   },
   communityUrl: {
     type: String,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
   users: [
     {

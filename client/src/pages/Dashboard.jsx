@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
-import DashboardCommunities from "../components/DashboardCommunities";
-import DashboardList from "../components/DashboardList";
+import DashboardCommunities from "../components/Dashboard/DashboardCommunities";
+import DashboardList from "../components/Dashboard/DashboardList";
 import { DASHBOARD_QUERY } from "../utils/queries";
 import Auth from "../utils/auth";
 import { useState } from "react";
@@ -24,13 +24,13 @@ export default function Dashboard() {
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="mt-4 text-5xl font-bold text-zinc-200">
+      <h2 className="mt-6 text-5xl font-bold text-zinc-200">
         Welcome {user.username}!
       </h2>
 
-      <div className="mt-4 flex md:flex-row md:justify-evenly flex-col">
+      <div className="mt-4 flex flex-col md:flex-row md:justify-evenly">
         <DashboardList endeavors={endeavors} sort={setSort} />
-        <DashboardCommunities communities={communities} />
+        <DashboardCommunities communities={communities} sort={setSort} />
       </div>
     </div>
   );

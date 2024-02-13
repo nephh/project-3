@@ -37,7 +37,7 @@ function App() {
       <div className="h-full bg-zinc-800 text-zinc-300">
         <Nav />
         <div
-          className="min-h-screen "
+          className="overflow-y-auto"
           style={{
             backgroundImage: `url(${SplashImage})`,
             backgroundSize: "cover",
@@ -48,8 +48,8 @@ function App() {
         >
           <Outlet />
         </div>
+        <Footer />
       </div>
-      <Footer />
     </ApolloProvider>
   );
 }

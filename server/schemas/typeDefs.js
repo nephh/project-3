@@ -28,6 +28,7 @@ const typeDefs = `
     image: String
     communityUrl: String
     userCount: Int
+    createdAt: String
     commentCount: Int
     comments: [Comment]!
     users: [User]!
