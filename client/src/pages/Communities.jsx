@@ -41,7 +41,7 @@ export default function Communities() {
   const communities = data?.communities || [];
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center h-screen">
       <div className="mt-4 flex flex-row justify-evenly">
         <CommunityList communities={communities} sort={setSort} join={onJoin} />
       </div>
