@@ -5,7 +5,7 @@ export default function DashboardList({ endeavors, sort }) {
   return (
     <>
       <div className="mx-auto flex w-8/12 flex-col md:mx-5">
-        <h1 className="mb-2 ml-4 text-3xl font-bold text-zinc-200">
+        <h1 className="mb-4 md:mb-2 ml-4 text-3xl font-bold text-zinc-200 flex justify-center ">
           Endeavors
         </h1>
         <div className="mb-2">

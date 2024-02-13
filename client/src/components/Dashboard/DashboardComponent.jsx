@@ -5,17 +5,17 @@ export default function DashboardComponent({ endeavor, index }) {
   return (
     <div
       key={index}
-      className="mb-4 flex w-full flex-row items-center rounded-lg bg-zinc-900 bg-opacity-75 py-6 px-8 shadow-md"
+      className="mb-4 flex flex-col w-full text-center md:text-left md:flex-row items-center rounded-lg bg-zinc-900 bg-opacity-75 py-6 px-8 shadow-md"
     >
       <Link to={`/community/${endeavor.communityUrl}/${endeavor._id}`}>
         <img
-          className="flex mr-8 h-32 w-32 items-center justify-center rounded-full object-cover"
+          className="flex my-4 md:mr-8 h-32 w-32 items-center justify-center rounded-full object-cover"
           src={`images/${endeavor.image}`}
           alt="endeavor"
         />
       </Link>
       <div className="w-10/12">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center md:justify-between justify-center">
           <span className="font-light text-zinc-400">{endeavor.community}</span>
         </div>
         <div className="mt-2">
