@@ -14,7 +14,7 @@ function NavTabs() {
 
   return (
     <>
-    <nav className="border-gray-200 bg-white dark:bg-gray-900 sticky top-0">
+    <nav className="border-gray-200 bg-white dark:bg-gray-900 fixed w-full top-0">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
         <Link to={Auth.loggedIn() ? "/dashboard" : "/login"} className="flex items-center space-x-3 rtl:space-x-reverse">
           {/* <img src="" className="h-8" alt="Endeveor image" /> */}
