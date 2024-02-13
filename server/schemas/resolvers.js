@@ -52,8 +52,9 @@ const resolvers = {
         case "title":
           sort = { title: 1 };
           break;
-        case "newest":
-          sort = { createdAt: -1 };
+        // Doesn't work :(
+        // case "newest":
+        //   sort = { createdAt: -1 };
         default:
           sort = null;
       }
@@ -125,6 +126,7 @@ const resolvers = {
           community,
           image,
           author: context.user.username,
+          users: [context.user._id],
         });
 
         await Community.findOneAndUpdate(

@@ -54,7 +54,7 @@ export default function Communities() {
     <div className="flex flex-col items-center">
       <div className="flex flex-col items-center justify-center text-center">
         <h2 className="mt-6 text-5xl font-bold text-zinc-200">Communities</h2>
-        <p className="mb-8 mt-4 text-center text-xl font-bold text-zinc-200">
+        <p className="mb-8 mt-4 px-2 text-center text-xl font-bold text-zinc-200">
           Find your new favorite community and start an Endeavor!
         </p>{" "}
         {loading && (

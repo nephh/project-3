@@ -19,7 +19,7 @@ export default function CommunityComponent({ community, index, join }) {
   };
 
   return (
-    <div className="mb-4 w-full rounded-lg bg-zinc-900 px-10 py-6 shadow-md bg-opacity-75">
+    <div className="mb-4 flex w-full flex-col justify-between rounded-lg bg-zinc-900 bg-opacity-75 px-10 py-6 shadow-md">
       <div className="mt-2">
         <div className="flex items-center justify-between">
           <Link
@@ -30,13 +30,21 @@ export default function CommunityComponent({ community, index, join }) {
           </Link>
 
           {Auth.loggedIn() && (
-            <button
-              onClick={(e) => handleClick(e, community._id)}
-              className="mt-1 px-4 py-2 text-xs font-semibold text-zinc-300 text-opacity-50"
-              value={community._id}
-            >
-              {check ? "Community Joined!" : "Join Community"}
-            </button>
+            <div>
+              {check ? (
+                <p className="mt-1 px-4 py-2 text-xs font-semibold text-zinc-300 text-opacity-50">
+                  Community Joined!
+                </p>
+              ) : (
+                <button
+                  onClick={(e) => handleClick(e, community._id)}
+                  className="mt-1 px-4 py-2 text-xs font-semibold text-zinc-300 text-opacity-50 hover:text-zinc-200"
+                  value={community._id}
+                >
+                  Join Community
+                </button>
+              )}
+            </div>
           )}
         </div>
         <p className="mt-2 overflow-hidden text-ellipsis text-zinc-300">
@@ -47,9 +55,13 @@ export default function CommunityComponent({ community, index, join }) {
         <p className="text-zinc-400">
           Users: <span className="font-semibold">{community.userCount}</span>
         </p>
+        <p className="text-zinc-400">
+          Endeavors:{" "}
+          <span className="font-semibold">{community.endeavorCount}</span>
+        </p>
         <div>
-          <h1 className="font-bold text-zinc-400 hover:underline">
-            Creator: {community.creator}
+          <h1 className="text-zinc-400">
+            Creator: <span className="font-semibold">{community.creator}</span>
           </h1>
         </div>
       </div>
