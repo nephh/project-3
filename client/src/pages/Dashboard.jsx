@@ -15,10 +15,6 @@ export default function Dashboard() {
     variables: { username: user.username, sort: sort },
   });
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   const endeavors = data?.endeavors || [];
   const communities = data?.user.communities || [];
 
@@ -27,7 +23,11 @@ export default function Dashboard() {
       <h2 className="mt-6 text-5xl font-bold text-zinc-200">
         Welcome {user.username}!
       </h2>
-
+      {loading && (
+        <div className="mt-12 flex h-screen justify-center text-4xl font-bold">
+          Loading...
+        </div>
+      )}
       <div className="mt-4 flex flex-col md:flex-row md:justify-evenly">
         <DashboardList endeavors={endeavors} sort={setSort} />
         <DashboardCommunities communities={communities} sort={setSort} />

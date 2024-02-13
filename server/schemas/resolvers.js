@@ -23,8 +23,8 @@ const resolvers = {
         options: { sort: sort },
       });
     },
-    communities: async (parent, { url, sort }) => {
-      const params = url ? { url } : {};
+    communities: async (parent, { name, sort }) => {
+      const params = name ? { name } : {};
       switch (sort) {
         case "popular":
           sort = { userCount: -1 };

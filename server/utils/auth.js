@@ -1,7 +1,8 @@
 const { GraphQLError } = require("graphql");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
-const secret = "mysecretssshhhhhhh";
+const secret = process.env.SUPER_SECRET;
 const expiration = "2h";
 
 module.exports = {
@@ -11,6 +12,7 @@ module.exports = {
     },
   }),
   authMiddleware: function ({ req }) {
+    console.log(process.env);
     let token = req.body.token || req.query.token || req.headers.authorization;
 
     if (req.headers.authorization) {

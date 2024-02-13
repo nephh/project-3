@@ -21,7 +21,7 @@ const communitySchema = new Schema({
     type: Number,
   },
   url: {
-    type: String
+    type: String,
   },
   // userLimit: {
   //   type: Number,
