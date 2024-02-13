@@ -162,11 +162,14 @@ export default function CreateEndeavor() {
             <option value={"unsplashGaming.jpg"}>Gaming</option>
             <option value={"unsplashGaming2.jpg"}>Gaming 2</option>
             <option value={"unsplashEvent.jpg"}>Events</option>
-            <option value={"unsplashCamera.jpg"}>Photography</option>
+            <option value={"unsplashPets.jpg"}>Pets</option>
+            <option value={"unsplashDogs.jpg"}>Dogs</option>
+            <option value={"unsplashBook.jpg"}>Books with Cat</option>
             <option value={"unsplashCity.jpg"}>City</option>
             <option value={"unsplashCoding.jpg"}>Coding/Computer</option>
             <option value={"unsplashTech.jpg"}>Tech</option>
             <option value={"unsplashTravel.jpg"}>Travel</option>
+            <option value={"unsplashCamera.jpg"}>Photography</option>
           </select>
         </div>
 
