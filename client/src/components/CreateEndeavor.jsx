@@ -6,6 +6,7 @@ import { ADD_ENDEAVOR } from "../utils/mutations";
 import {
   DASHBOARD_QUERY,
   QUERY_SINGLE_COMMUNITY,
+  QUERY_SINGLE_ENDEAVOR,
   QUERY_SINGLE_USER,
 } from "../utils/queries";
 
@@ -20,7 +21,7 @@ export default function CreateEndeavor() {
     image: "",
   });
 
-  const [addEndeavor, { error }] = useMutation(ADD_ENDEAVOR, {
+  const [addEndeavor, { error, data: mutation }] = useMutation(ADD_ENDEAVOR, {
     refetchQueries: [
       { query: DASHBOARD_QUERY, variables: { username: user.data.username } },
       {
@@ -61,6 +62,7 @@ export default function CreateEndeavor() {
           author: user.data.username,
         },
       });
+      console.log(data.addEndeavor);
 
       setFormState({
         title: "",
@@ -69,7 +71,7 @@ export default function CreateEndeavor() {
       });
       //Test take to endeavor page, seems to work but without named url
       window.location.replace(
-        `/community/${formState.community}/${data.addEndeavor._id}`,
+        `/community/${data.addEndeavor.communityUrl}/${data.addEndeavor._id}`,
       );
       console.log(formState.image);
     } catch (err) {

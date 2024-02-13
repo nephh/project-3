@@ -38,6 +38,7 @@ export const ADD_ENDEAVOR = gql`
       content
       community
       image
+      communityUrl
     }
   }
 `;

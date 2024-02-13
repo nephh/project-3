@@ -14,7 +14,7 @@ export default function Endeavor() {
 
   const endeavor = data?.endeavor || [];
   const users = endeavor?.users || [];
-  console.log(endeavor.title);
+  console.log(users);
 
   // ADD FUNCTIONALITY FOR PROGRESS BAR
   const [funding, setFunding] = useState(5);
