@@ -4,7 +4,7 @@ import { FaGithub, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 fixed w-full bottom-0">
+    <footer className="bg-gray-900 sticky w-full bottom-0">
       <div className="mx-auto flex w-full max-w-screen-xl items-center justify-evenly">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           @ 2024 Endeavor.

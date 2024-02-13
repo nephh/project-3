@@ -20,7 +20,7 @@ export default function Dashboard() {
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="mt-6 text-5xl font-bold text-zinc-200">
+      <h2 className="mt-6 md:text-5xl font-bold text-zinc-200">
         Welcome {user.username}!
       </h2>
       {loading && (
