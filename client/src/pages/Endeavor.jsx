@@ -15,6 +15,7 @@ export default function Endeavor() {
   const endeavor = data?.endeavor || [];
   const users = endeavor?.users || [];
   console.log(endeavor.title);
+  console.log(endeavor.image);
 
   // ADD FUNCTIONALITY FOR PROGRESS BAR
   const [funding, setFunding] = useState(5);
@@ -44,11 +45,19 @@ export default function Endeavor() {
             </h1>
             <button
               onClick={handleGoBack}
-              className="mb-2 text-l rounded bg-indigo-500 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
+              className="text-l mb-2 rounded bg-indigo-500 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
             >
               Back
             </button>
             {/* card div */}
+            <div className="flex justify-center ">
+              {/* Image */}
+              <img
+                className="my-4 flex h-[200px] w-[200px] items-center justify-center rounded-full object-cover"
+                src={`/images/${endeavor.image}`}
+                alt="endeavor image"
+              />
+            </div>
             <div className="mx-auto mt-4 rounded-lg bg-zinc-900 bg-opacity-75 px-8 py-3 shadow-md">
               <div className="mx-auto flex items-center justify-center py-4">
                 <h1 className="px-2 text-3xl font-bold text-white">
@@ -63,6 +72,7 @@ export default function Endeavor() {
               <div className="mt-4 flex items-center justify-between">
                 {/* Contributors Div */}
                 <div className="mt-2 max-w-4xl px-10 py-6">
+                  <p className="py-1">Author: {endeavor.author}</p>
                   <h2 className="text-2xl font-bold text-zinc-500">
                     {endeavor.userCount} Active Users
                   </h2>
@@ -78,9 +88,7 @@ export default function Endeavor() {
                   </ul>
                 </div>
                 {/* Join Endeavor btn, not functional */}
-                <button
-                  className="text-l rounded px-3 py-2 font-bold text-zinc-400 hover:scale-110 hover:duration-700 hover:ease-in-out"
-                >
+                <button className="text-l rounded px-3 py-2 font-bold text-zinc-400 hover:scale-110 hover:duration-700 hover:ease-in-out">
                   Join Endeavor
                 </button>
               </div>
