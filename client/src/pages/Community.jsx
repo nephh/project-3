@@ -24,6 +24,10 @@ export default function Community() {
     }
   }, [])
 
+  const handleGoBack = () => {
+    window.history.back(); // Navigate back to the previous route
+  };
+
   return (
     <div className="overflow-x-hidden h-screen">
       <div className="px-6 py-8">
@@ -49,12 +53,12 @@ export default function Community() {
                   </p>
                 </div>
                 <div className="mt-4 flex items-center justify-between">
-                  <a
-                    href="#"
+                  <button
+                    onClick={handleGoBack}
                     className="text-l rounded bg-blue-500 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
                   >
-                    JOIN US
-                  </a>
+                    Back
+                  </button>
                   <p className="font-bold text-gray-700">{community.endeavorCount} Active Endeavors</p>
                 </div>
               </div>
