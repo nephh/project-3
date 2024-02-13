@@ -9,7 +9,7 @@ export default function Endeavor() {
   const { loading, data } = useQuery(QUERY_SINGLE_ENDEAVOR, {
     variables: { endeavorId: endeavorId },
   });
-  console.log(endeavorId)
+  console.log(endeavorId);
   console.log(data);
 
   const endeavor = data?.endeavor || [];
@@ -17,44 +17,100 @@ export default function Endeavor() {
   console.log(endeavor.title);
 
   // ADD FUNCTIONALITY FOR PROGRESS BAR
-  const [ funding, setFunding ] = useState(5);
-  
+  const [funding, setFunding] = useState(5);
+
   const handleChange = (event) => {
     setFunding((funding) => {
-      funding + 5
-    }) 
-  }  
+      funding + 5;
+    });
+  };
+
+  const handleGoBack = () => {
+    window.history.back(); // Navigate back to the previous route
+  };
+
+  const handleGoToStripe = () => {
+    window.location.assign("https://buy.stripe.com/test_4gw01gcA85GO8jC3cc");
+  };
 
   return (
-    <div className="container mx-auto flex justify-center">
+    <div className="mx-auto flex h-screen flex-col items-center">
       {/* name of endeavor and description */}
-      <div className="px-auto">
-        <div className="w-full lg:w-8/12">
+      <div className="px-auto w-11/12 md:w-8/12">
+        <div className="">
           <div className="mt-4">
-            <div className="mx-auto flex items-center justify-between">
-              <h1 className="ml-4 text-3xl font-bold text-white">{endeavor.title}</h1>
-              <h2 className="mr-10 text-xl font-medium text-green-500">
-                ACTIVE
-              </h2>
-            </div>
-            <div className="mx-auto mt-2 max-w-4xl rounded-lg bg-white px-10 py-6 shadow-md shadow-black">
+            <h1 className="py-2 text-center text-3xl font-bold text-zinc-200 lg:text-4xl">
+              Endeavor
+            </h1>
+            <button
+              onClick={handleGoBack}
+              className="mb-2 text-l rounded bg-indigo-500 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
+            >
+              Back
+            </button>
+            {/* card div */}
+            <div className="mx-auto mt-4 rounded-lg bg-zinc-900 bg-opacity-75 px-8 py-3 shadow-md">
+              <div className="mx-auto flex items-center justify-center py-4">
+                <h1 className="px-2 text-3xl font-bold text-white">
+                  {endeavor.title}
+                </h1>
+              </div>
               <div className="mt-2">
-                <p className="text-2xl font-bold text-gray-700"></p>
-                <p className="mt-2 text-gray-600">
+                <p className="mt-2 px-3 py-3 text-xl text-zinc-300">
                   {endeavor.content}
                 </p>
               </div>
               <div className="mt-4 flex items-center justify-between">
-                <a
-                  href="#"
-                  className="text-l rounded bg-blue-500 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
+                {/* Contributors Div */}
+                <div className="mt-2 max-w-4xl px-10 py-6">
+                  <h2 className="text-2xl font-bold text-zinc-500">
+                    {endeavor.userCount} Active Users
+                  </h2>
+                  <ul className="-mx-2 flex flex-wrap py-4">
+                    {users.map((user, index) => (
+                      <li
+                        key={index}
+                        className="mx-2 my-2 overflow-hidden rounded-lg bg-rose-900 px-3 py-2 shadow-md"
+                      >
+                        {user.username}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {/* Join Endeavor btn, not functional */}
+                <button
+                  className="text-l rounded px-3 py-2 font-bold text-zinc-400 hover:scale-110 hover:duration-700 hover:ease-in-out"
                 >
-                  JOIN US
-                </a>
-                <p className="font-bold">{endeavor.userCount} Members</p>
+                  Join Endeavor
+                </button>
               </div>
-              {/* PROGRESS BAR */}
-              <div className="mt-6">
+            </div>
+            <div className="mx-auto mt-8 w-8/12 rounded-lg bg-zinc-900 bg-opacity-50 px-10 py-6 shadow-md shadow-md">
+              {/* GOALS Div, not implemented*/}
+              <div className="mx-auto mt-1 max-w-4xl px-10 pb-3">
+                <h2 className="text-2xl font-bold">Goals:</h2>
+                <ul>
+                  <li className="mx-auto mt-2 max-w-4xl rounded-lg bg-gray-600 px-4 py-3 shadow-md shadow-black">
+                    <h3 className="text-l font-medium">Donations</h3>
+                    <p>Stretch Goal!</p>
+                  </li>
+                </ul>
+              </div>
+              <div className="flex justify-center">
+                <button
+                  onClick={handleGoToStripe}
+                  className="text-l mt-3 rounded bg-indigo-600 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
+                >
+                  Donate
+                </button>
+              </div>
+              <div className="flex justify-center">
+                <p className="mt-2 text-sm text-zinc-500">
+                  (Routes to test Stripe page)
+                </p>
+              </div>
+              {/* PROGRESS BAR, not implemented */}
+              <div className="mt-1">
                 <div className="flex justify-between">
                   <h3 className="text-xl font-bold">Funding</h3>
                   <h2 className="text-l font-medium">{`${funding}$/100$`}</h2>
@@ -67,84 +123,14 @@ export default function Endeavor() {
                 </div>
               </div>
             </div>
-            {/* Contributors Div */}
+            {/* Comments Div, not implemented */}
             <div className="mx-auto mt-2 max-w-4xl px-10 py-6">
-              <h2 className="text-2xl font-bold">Members</h2>
-              <ul className="-mx-2 flex flex-wrap py-4">
-                {users.map((user, index) => (
-                  <li key={index} className="mx-2 my-2 overflow-hidden rounded-lg bg-indigo-100 px-2 py-1 shadow-md">
-                    {user.username}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* GOALS Div */}
-            <div className="mx-auto mt-1 max-w-4xl px-10">
-              <h2 className="text-2xl font-bold">Goals:</h2>
-              <ul>
-                <li className="mx-auto mt-2 max-w-4xl rounded-lg bg-white px-4 py-3 shadow-md shadow-black">
-                  <h3 className="text-l font-medium">Goal</h3>
-                  <p>
-                    Beat Boss!!!
-                  </p>
-                </li>
-              </ul>
-            </div>
-            {/* Comments Div */}
-            <div className="mx-auto mt-2 max-w-4xl px-10 py-6">
+              <h2 className="py-2 text-2xl font-semibold text-zinc-400">
+                Comments:
+              </h2>
               <ul>
                 <li className="max-w-5/6 mx-auto mt-1 flex items-center justify-between rounded-lg bg-zinc-400 px-4 py-3 shadow-md shadow-black">
-                  <p className="text-white">
-                    This is a comment, this topic sucks.
-                  </p>
-                  <p className="text-white">Jared</p>
-                </li>
-                <li className="max-w-5/6 mx-auto mt-1 flex items-center justify-between rounded-lg bg-zinc-400 px-4 py-3 shadow-md shadow-black">
-                  <p className="text-white">
-                    This is a comment, this topic sucks.
-                  </p>
-                  <p className="text-white">Jared</p>
-                </li>
-                <li className="max-w-5/6 mx-auto mt-1 flex items-center justify-between rounded-lg bg-zinc-400 px-4 py-3 shadow-md shadow-black">
-                  <p className="text-white">
-                    This is a comment, this topic sucks.
-                  </p>
-                  <p className="text-white">Jared</p>
-                </li>
-                <li className="max-w-5/6 mx-auto mt-1 flex items-center justify-between rounded-lg bg-zinc-400 px-4 py-3 shadow-md shadow-black">
-                  <p className="text-white">
-                    This is a comment, this topic sucks.
-                  </p>
-                  <p className="text-white">Jared</p>
-                </li>
-                <li className="max-w-5/6 mx-auto mt-1 flex items-center justify-between rounded-lg bg-zinc-400 px-4 py-3 shadow-md shadow-black">
-                  <p className="text-white">
-                    This is a comment, this topic sucks.
-                  </p>
-                  <p className="text-white">Jared</p>
-                </li>
-                <li className="max-w-5/6 mx-auto mt-1 flex items-center justify-between rounded-lg bg-zinc-400 px-4 py-3 shadow-md shadow-black">
-                  <p className="text-white">
-                    This is a comment, this topic sucks.
-                  </p>
-                  <p className="text-white">Jared</p>
-                </li>
-                <li className="max-w-5/6 mx-auto mt-1 flex items-center justify-between rounded-lg bg-zinc-400 px-4 py-3 shadow-md shadow-black">
-                  <p className="text-white">
-                    This is a comment, this topic sucks.
-                  </p>
-                  <p className="text-white">Jared</p>
-                </li>
-                <li className="max-w-5/6 mx-auto mt-1 flex items-center justify-between rounded-lg bg-zinc-400 px-4 py-3 shadow-md shadow-black">
-                  <p className="text-white">
-                    This is a comment, this topic sucks.
-                  </p>
-                  <p className="text-white">Jared</p>
-                </li>
-                <li className="max-w-5/6 mx-auto mt-1 flex items-center justify-between rounded-lg bg-zinc-400 px-4 py-3 shadow-md shadow-black">
-                  <p className="text-white">
-                    This is a comment, this topic sucks.
-                  </p>
+                  <p className="text-white">Hello there, this is a comment.</p>
                   <p className="text-white">Jared</p>
                 </li>
               </ul>
