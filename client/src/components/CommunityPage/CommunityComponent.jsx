@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 
 export default function CommunityComponent({ community, index, join }) {
   let user;

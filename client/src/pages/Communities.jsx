@@ -2,7 +2,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { useState, useEffect } from "react";
 import { DASHBOARD_QUERY, QUERY_COMMUNITIES } from "../utils/queries";
 import { JOIN_COMMUNITY } from "../utils/mutations";
-import CommunityList from "../components/CommunityList";
+import CommunityList from "../components/CommunityPage/CommunityList";
 import Auth from "../utils/auth";
 
 let user;
