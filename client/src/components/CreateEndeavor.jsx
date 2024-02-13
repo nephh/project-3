@@ -3,13 +3,17 @@ import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 
 import { ADD_ENDEAVOR } from "../utils/mutations";
-import { QUERY_SINGLE_USER } from "../utils/queries";
+import { DASHBOARD_QUERY, QUERY_SINGLE_USER } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
 export default function CreateEndeavor() {
   const user = Auth.getUserInfo();
-  const [addEndeavor, { error }] = useMutation(ADD_ENDEAVOR);
+  const [addEndeavor, { error }] = useMutation(ADD_ENDEAVOR, {
+    refetchQueries: [
+      { query: DASHBOARD_QUERY, variables: { username: user.data.username } },
+    ],
+  });
   const { loading, data } = useQuery(QUERY_SINGLE_USER, {
     variables: { username: user.data.username },
   });
@@ -56,7 +60,9 @@ export default function CreateEndeavor() {
         image: "",
       });
       //Test take to endeavor page, seems to work but without named url
-      //window.location.replace(`/community/${formState.community}/${data.addEndeavor._id}`);
+      window.location.replace(
+        `/community/${formState.community}/${data.addEndeavor._id}`,
+      );
       console.log(formState.image);
     } catch (err) {
       console.error(err);
