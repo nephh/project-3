@@ -90,6 +90,9 @@ export const QUERY_SINGLE_ENDEAVOR = gql`
       image
       communityUrl
       userCount
+      users {
+        username
+      }
       comments {
         commentText
         commentAuthor
@@ -111,6 +114,7 @@ export const QUERY_SINGLE_COMMUNITY = gql`
         username
       }
       endeavors {
+        _id
         title
         content
         author
