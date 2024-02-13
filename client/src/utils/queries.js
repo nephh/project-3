@@ -69,7 +69,7 @@ export const DASHBOARD_QUERY = gql`
       communityUrl
       createdAt
     }
-    user(username: $username, sort: $sort) {
+    user(username: $username) {
       username
       communities {
         name
@@ -110,6 +110,10 @@ export const QUERY_SINGLE_COMMUNITY = gql`
       url
       userCount
       endeavorCount
+      endeavors{
+        title
+        author
+      }
       users {
         username
       }

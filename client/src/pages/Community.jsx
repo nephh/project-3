@@ -11,37 +11,36 @@ export default function Community() {
 
   console.log(data);
   const community = data?.community || [];
-  const endeavors = community?.endeavors || [];
+  const endeavors = data?.community.endeavors || [];
   const users = community?.users || [];
-  console.log(community.name);
-  console.log(endeavors)
+  console.log(endeavors);
 
-  const [ url, setUrl ] = useState("");
+  const [url, setUrl] = useState("");
 
   useEffect(() => {
-    if(community) {
-      setUrl(community.url)
+    if (community) {
+      setUrl(community.url);
     }
-  }, [])
+  }, []);
 
   const handleGoBack = () => {
     window.history.back(); // Navigate back to the previous route
   };
 
   return (
-    <div className="overflow-x-hidden h-screen">
+    <div className="h-screen overflow-x-hidden">
       <div className="px-6 py-8">
-      <h1 className="pt-3 pb-5 text-center text-2xl font-bold text-zinc-200 md:text-3xl">
-                {community.name} Community
-              </h1>
-        <div className="container mx-auto flex justify lg:justify-between">
+        <h1 className="pb-5 pt-3 text-center text-2xl font-bold text-zinc-200 md:text-3xl">
+          {community.name} Community
+        </h1>
+        <div className="justify container mx-auto flex lg:justify-between">
           <div className="w-full lg:w-8/12">
-                  <button
-                    onClick={handleGoBack}
-                    className="mb-2 text-l rounded bg-blue-800 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
-                  >
-                    Back
-                  </button>
+            <button
+              onClick={handleGoBack}
+              className="text-l mb-2 rounded bg-cyan-900 px-3 py-2 font-bold text-zinc-200 hover:scale-110 hover:duration-700 hover:ease-in-out"
+            >
+              Back
+            </button>
             <div className="flex items-center justify-between">
               {/* <h1 className="py-3 text-2xl font-bold text-zinc-200 md:text-3xl">
                 {community.name} Community
@@ -57,13 +56,12 @@ export default function Community() {
               <div className="mx-auto max-w-4xl rounded-lg bg-zinc-900 bg-opacity-75 px-10 py-6 shadow-md shadow-black">
                 <div className="mt-2">
                   <p className="text-2xl font-bold text-zinc-400">About Us:</p>
-                  <p className="mt-2 text-zinc-200">
-                    {community.description}
-                  </p>
+                  <p className="mt-2 text-zinc-200">{community.description}</p>
                 </div>
                 <div className="mt-4 flex items-center justify-between">
-                 
-                  <p className="font-bold text-gray-500">{community.endeavorCount} Active Endeavors</p>
+                  <p className="font-bold text-gray-500">
+                    {community.endeavorCount} Active Endeavors
+                  </p>
                 </div>
               </div>
             </div>
@@ -72,13 +70,12 @@ export default function Community() {
             </div>
             <div className="mt-8">
               {endeavors.map((endeavor, index) => (
-                <EndeavorComponent 
+                <EndeavorComponent
                   key={index}
                   endeavor={endeavor}
                   index={index}
-                /> 
+                />
               ))}
-              
             </div>
             {/* <div className="mt-8">
               <div className="flex">
@@ -126,12 +123,15 @@ export default function Community() {
               <div className="mx-auto flex max-w-sm flex-col rounded-lg bg-rose-900 px-4 py-6 shadow-md">
                 <ul>
                   {users.map((user, index) => (
-                    <li key={index} className="flex items-center space-between">
-                      <p className="mx-1 font-bold text-gray-400 hover:underline">{user.username} {`-`}</p>
-                      <p className="text-sm font-light text-gray-400">Joined: 1/1/2024</p>
+                    <li key={index} className="space-between flex items-center">
+                      <p className="mx-1 font-bold text-gray-400 hover:underline">
+                        {user.username} {`-`}
+                      </p>
+                      <p className="text-sm font-light text-gray-400">
+                        Joined: 1/1/2024
+                      </p>
                     </li>
                   ))}
-                  
                 </ul>
               </div>
             </div>
@@ -139,29 +139,31 @@ export default function Community() {
               <h1 className="mb-4 text-xl font-bold text-zinc-400">
                 Most Recent Endeavor
               </h1>
-              <div className="mx-auto flex max-w-sm flex-col rounded-lg bg-rose-900 px-8 py-6 shadow-md">
-                <div className="mt-4">
-                  <a
-                    href="#"
-                    className="text-lg font-medium text-gray-300 hover:underline"
-                  >
-                    LFG
-                  </a>
-                </div>
-                <div className="mt-4 flex items-center justify-between">
-                  <div className="flex items-center">
+              {endeavors[0] && (
+                <div className="mx-auto flex max-w-sm flex-col rounded-lg bg-rose-900 px-8 py-6 shadow-md">
+                  <div className="mt-4">
                     <a
                       href="#"
-                      className="mx-3 text-sm text-gray-400 hover:underline"
+                      className="text-lg font-medium text-gray-300 hover:underline"
                     >
-                      Owen
+                      {endeavors[0].title}
                     </a>
                   </div>
-                  <span className="text-sm font-light text-gray-400">
-                    Jun 1, 2020
-                  </span>
+                  <div className="mt-4 flex items-center justify-between">
+                    <div className="flex items-center">
+                      <a
+                        href="#"
+                        className="text-sm text-gray-400 hover:underline"
+                      >
+                        {endeavors[0].author}
+                      </a>
+                    </div>
+                    <span className="text-sm font-light text-gray-400">
+                      {endeavors[0].userCount} Active Users
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

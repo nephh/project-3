@@ -22,13 +22,13 @@ export default function DashboardList({ endeavors, sort }) {
           >
             Alphabetical Order
           </button>
-          |
+          {/* |
           <button
             onClick={() => sort("newest")}
             className="px-4 py-2 text-sm text-zinc-300"
           >
             Newest
-          </button>
+          </button> */}
         </div>
         {endeavors.map((endeavor, index) => (
           <DashboardComponent key={index} endeavor={endeavor} />

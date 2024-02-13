@@ -30,7 +30,7 @@ function NavTabs() {
               <Link to={"/login"}>
                 <button
                   type="button"
-                  className="rounded-lg bg-indigo-500 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="rounded-lg bg-cyan-900 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   onClick={() => Auth.logout()}
                 >
                   Logout
@@ -40,7 +40,7 @@ function NavTabs() {
               <Link to={"/login"}>
                 <button
                   type="button"
-                  className="rounded-lg bg-indigo-500 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="rounded-lg bg-cyan-900 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Login
                 </button>
